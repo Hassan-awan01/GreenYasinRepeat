@@ -26,7 +26,7 @@ export const blogArticles = [
     title: 'Innovations in Renewable Energy',
     author: 'Prof. David Chen',
     date: 'September 15, 2023',
-    image: '/src/Components/Images/img4.jpg',
+    image: '/src/Components/Images/img8.jpg',
     excerpt: 'Explore the latest advancements in solar, wind, and geothermal energy, and how they are shaping a greener future.',
     content: [
       { type: 'paragraph', text: 'The transition to renewable energy sources is paramount in the global fight against climate change. Recent technological breakthroughs are accelerating this shift, making clean energy more accessible and efficient than ever before. From advanced solar panel designs to offshore wind farms and innovative geothermal systems, the landscape of renewable energy is rapidly evolving.' },

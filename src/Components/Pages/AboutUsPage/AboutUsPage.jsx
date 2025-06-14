@@ -8,7 +8,7 @@ import SectionHeading from '../../Shared/SectionHeading';
 import aboutUsHeroImage from '../../Images/img1.jpg'; // Example placeholder
 import greenerFutureImage from '../../Images/img2.jpg'; // Example placeholder
 import agricultureStep1 from '../../Images/img3.jpg'; // Example placeholder
-import agricultureStep2 from '../../Images/img4.jpg'; // Example placeholder
+import agricultureStep2 from '../../Images/img8.jpg'; // Example placeholder
 import agricultureStep3 from '../../Images/img5.jpg'; // Example placeholder
 import agricultureStep4 from '../../Images/img6.jpg'; // Example placeholder
 import faqImage from '../../Images/img7.jpg'; // Example placeholder

@@ -9,7 +9,7 @@ function ContactInfo() {
       { number: '+92 326 6319502', href: 'tel:+923266319502' },
     ],
     address: {
-      line1: 'PIA Road, Lahore',
+      line1: 'Pia Road, Lahore',
     },
     emails: [
       {

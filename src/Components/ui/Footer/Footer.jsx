@@ -5,7 +5,7 @@ import { FaXTwitter } from 'react-icons/fa6'; // For the new 'X' icon
 import footImage from '../../Images/foot.jpg';
 
 // Placeholder images for recent posts
-import recentPost1 from '../../Images/img4.jpg'; // Example placeholder
+import recentPost1 from '../../Images/img8.jpg'; // Example placeholder
 import recentPost2 from '../../Images/img5.jpg'; // Example placeholder
 
 const Footer = () => {
