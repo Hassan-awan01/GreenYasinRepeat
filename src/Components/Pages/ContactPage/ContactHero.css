@@ -1,0 +1,59 @@
+.contact-hero-section {
+  /* background: url('../../assets/Free/ml2.jpg') no-repeat center center/cover !important; */
+  background-color: #f5f5f5 !important;
+  padding: 4rem 0;
+  margin-top: 0rem;
+}
+
+.hero-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.hero-heading {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: bold;
+  color: #32cd32;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .hero-heading {
+    font-size: 3rem;
+  }
+}
+
+.hero-text {
+  font-size: 1.125rem;
+  color: white;
+}
+
+.hero-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.hero-image {
+  margin-top: 2.5rem;
+  position: relative;
+}
+
+.hero-image img {
+  width: 50%;
+}
