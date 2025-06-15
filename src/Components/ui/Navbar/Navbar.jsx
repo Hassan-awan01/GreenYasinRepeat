@@ -30,7 +30,9 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/80 backdrop-blur-md shadow-lg' : 'bg-white/60 backdrop-blur-sm shadow-sm'
+        isScrolled
+          ? 'bg-white/80 backdrop-blur-md shadow-lg'
+          : 'md:bg-transparent md:shadow-none md:backdrop-blur-none bg-white/60 backdrop-blur-sm shadow-sm'
       }`}
     >
       <ContactBar />

@@ -2,6 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaFlask, FaLeaf, FaAward, FaIndustry, FaFilter, FaHammer, FaHardHat, FaRecycle, FaBook, FaMapMarkedAlt } from 'react-icons/fa'; // Importing specific Font Awesome icons
 import { servicesData } from './projectsData';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 // Mapping icon names to actual icon components
 const iconComponents = {
@@ -18,10 +21,51 @@ const iconComponents = {
 };
 
 const ServicesSection = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false, // No arrows on mobile slider
+    autoplay: true,
+    autoplaySpeed: 2000,
+    cssEase: 'linear',
+  };
+
   return (
     <section id="our-services-section" className="py-16">
       <div className="global-container">
-        <div className="flex flex-wrap justify-center gap-8 py-4">
+        {/* Mobile Slider */}
+        <div className="sm:hidden">
+          {/* @ts-ignore */}
+          <Slider {...settings}>
+            {servicesData.map((service, index) => {
+              const IconComponent = iconComponents[service.icon];
+              if (!IconComponent) {
+                console.warn(`Icon component for ${service.icon} not found.`);
+                return null;
+              }
+              return (
+                <motion.div
+                  key={index}
+                  className="flex flex-col items-center justify-center text-center w-full px-4 py-4"
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <IconComponent className="mb-4 text-3xl text-green-600 mx-auto" />
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    {service.title}
+                  </h3>
+                </motion.div>
+              );
+            })}
+          </Slider>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden sm:flex flex-wrap justify-center gap-8 py-4">
           {servicesData.map((service, index) => {
             const IconComponent = iconComponents[service.icon];
             if (!IconComponent) {

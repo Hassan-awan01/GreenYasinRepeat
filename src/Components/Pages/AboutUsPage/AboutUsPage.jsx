@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { FaCheckCircle, FaQuestionCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import SectionHeading from '../../Shared/SectionHeading';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const BASE_PATH = '/GreenYasin';
 
@@ -66,8 +69,19 @@ const faqs = [
 ];
 
 const AboutUsPage = () => {
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 2000,
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 md:pt-40 pt-5 pb-16">
+    <div className="min-h-screen bg-gray-50 md:pt-40 pt-20 pb-16">
       {/* Hero Section
       <section
         className="relative h-[50vh] bg-cover bg-center flex items-center justify-center text-white hidden md:flex"
@@ -146,7 +160,8 @@ const AboutUsPage = () => {
           Our Process
         </h2>
         <SectionHeading title="Steps In The Agriculture Process" highlightWord="Process" className="!mb-12"/>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {agricultureSteps.map((step, index) => (
             <motion.div
               key={index}
@@ -166,6 +181,32 @@ const AboutUsPage = () => {
               <p className="text-gray-600">{step.description}</p>
             </motion.div>
           ))}
+        </div>
+
+        {/* Mobile Slider */}
+        <div className="md:hidden">
+          {/* @ts-ignore */}
+          <Slider {...sliderSettings}>
+            {agricultureSteps.map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-gray-100 p-6 rounded-lg text-center mx-2"
+              >
+                <img
+                  src={step.image}
+                  alt={step.title}
+                  className="w-full h-48 object-cover rounded-lg mb-4"
+                />
+                <h4 className="text-xl font-bold text-gray-800 mb-2">
+                  {step.title}
+                </h4>
+                <p className="text-gray-600">{step.description}</p>
+              </motion.div>
+            ))}
+          </Slider>
         </div>
       </section>
 

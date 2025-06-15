@@ -53,7 +53,8 @@ const AimSection = () => {
         </div>
 
         {/* Right: Image Slider */}
-        <div className="relative h-64 w-96 flex-shrink-0 md:h-80 md:w-[30rem] overflow-hidden shadow-lg rounded-lg mt-8 md:mt-0">
+        <div className="relative h-48 w-80 flex-shrink-0 md:h-80 md:w-[30rem] overflow-hidden shadow-lg rounded-lg mt-8 md:mt-0">
+          {/* @ts-ignore */}
           <Slider {...settings}>
             {sliderImages.map((image, index) => (
               <div key={index}>
@@ -62,7 +63,7 @@ const AimSection = () => {
                   alt={`Aim Slider ${index + 1}`}
                   className="w-full h-full object-cover"
                 />
-          </div>
+              </div>
             ))}
           </Slider>
           {/* Removed Play Button Overlay */}

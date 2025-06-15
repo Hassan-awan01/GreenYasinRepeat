@@ -51,6 +51,7 @@ const HeroSection = () => {
     <section className="relative min-h-screen w-full overflow-hidden">
       {/* Slider */}
       <div className="absolute inset-0">
+        {/* @ts-ignore */}
         <Slider {...settings}>
           {images.map((image, index) => (
             <div key={index} className="h-screen w-full">
@@ -67,7 +68,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
 
       {/* Content with Animation */}
-      <div className="global-container relative z-10 flex h-screen max-w-7xl flex-col items-center justify-center text-center">
+      <div className="global-container relative z-10 flex h-screen max-w-7xl flex-col items-center justify-center text-center pt-20 md:pt-0">
         {/* Eco-friendly Icons */}
         <motion.div 
           className="mb-8 flex space-x-6"
@@ -102,7 +103,7 @@ const HeroSection = () => {
 
         {/* Paragraph Animation */}
         <motion.p
-          className="mt-6 max-w-2xl text-lg text-gray-200"
+          className="mt-6 max-w-2xl text-lg text-gray-200 hidden md:block"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: 'easeOut', delay: 0.3 }}
@@ -113,7 +114,7 @@ const HeroSection = () => {
 
         {/* Buttons Animation */}
         <motion.div
-          className="mt-8 flex flex-col space-y-4 sm:flex-row sm:space-x-6 sm:space-y-0"
+          className="mt-8 flex items-center justify-center space-x-4 sm:space-x-6"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: 'easeOut', delay: 0.4 }}
@@ -123,21 +124,29 @@ const HeroSection = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.4, ease: 'easeOut' }}
+              className="flex-grow-0 flex-shrink-0"
             >
               <Link
                 to={`${BASE_PATH}/signup`}
-                className="inline-block rounded-full bg-emerald-600 px-10 py-4 text-xl font-semibold shadow-lg transition-all duration-300 hover:bg-emerald-700 hover:shadow-emerald-500/50"
+                className="flex items-center justify-center rounded-full bg-emerald-600 px-6 py-3 text-base font-semibold shadow-lg transition-all duration-300 hover:bg-emerald-700 hover:shadow-emerald-500/50 md:px-10 md:py-4 md:text-xl h-14"
               >
                 Get Started
               </Link>
             </motion.div>
           )}
-          <Link
-            to={`${BASE_PATH}/about`}
-            className="inline-block rounded-full border-2 border-emerald-500 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-emerald-500/10"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.4, ease: 'easeOut' }}
+            className="flex-grow-0 flex-shrink-0"
           >
-            Learn More
-          </Link>
+            <Link
+              to={`${BASE_PATH}/about`}
+              className="flex items-center justify-center rounded-full border-2 border-emerald-500 px-6 py-3 text-base font-semibold text-white transition-all hover:bg-emerald-500/10 md:px-10 md:py-4 md:text-xl h-14"
+            >
+              Learn More
+            </Link>
+          </motion.div>
         </motion.div>
 
         {/* Scroll Indicator */}

@@ -123,22 +123,40 @@ const OurWorkPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
+          className="mb-12"
         >
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-300 ${
-                activeCategory === category.id
-                  ? 'bg-emerald-600 text-white shadow-lg'
-                  : 'bg-white text-gray-600 hover:bg-emerald-50'
-              }`}
+          {/* Dropdown for Mobile */}
+          <div className="sm:hidden px-4 mb-8">
+            <select
+              value={activeCategory}
+              onChange={(e) => setActiveCategory(e.target.value)}
+              className="block w-full px-6 py-3 text-lg text-gray-800 bg-white border border-gray-300 rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
             >
-              {category.icon}
-              <span>{category.name}</span>
-            </button>
-          ))}
+              {categories.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Buttons for Desktop */}
+          <div className="hidden sm:flex flex-wrap justify-center gap-4 mb-12">
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setActiveCategory(category.id)}
+                className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-300 ${
+                  activeCategory === category.id
+                    ? 'bg-emerald-600 text-white shadow-lg'
+                    : 'bg-white text-gray-600 hover:bg-emerald-50'
+                }`}
+              >
+                {category.icon}
+                <span>{category.name}</span>
+              </button>
+            ))}
+          </div>
         </motion.div>
 
         {/* Projects Grid */}
