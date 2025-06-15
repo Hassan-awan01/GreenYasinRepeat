@@ -15,66 +15,71 @@ import AddPostPage from './Components/Pages/BlogPage/AddPostPage';
 import ProfilePage from './Components/Pages/ProfilePage/ProfilePage';
 import ProjectDetailPage from './Components/Pages/OurWorkPage/ProjectDetailPage';
 import ProtectedRoute from './Components/Auth/ProtectedRoute';
+import OurTeamPage from './Components/Pages/OurTeamPage/OurTeamPage';
 
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
     children: [
       {
-        path: '/',
+        path: '/GreenYasin/',
         element: <HomePage />,
       },
       {
-        path: '/about',
+        path: '/GreenYasin/about',
         element: <AboutUsPage />,
       },
       {
-        path: '/contact',
+        path: '/GreenYasin/contact',
         element: <ContactPage />,
       },
       {
-        path: '/our-work',
+        path: '/GreenYasin/our-work',
         element: <OurWorkPage />,
       },
       {
-        path: '/our-work/:projectId',
+        path: '/GreenYasin/our-work/:projectId',
         element: <ProjectDetailPage />,
       },
       {
-        path: '/blog',
+        path: '/GreenYasin/blog',
         element: <BlogPage />,
       },
       {
-        path: '/blog/:articleId',
+        path: '/GreenYasin/blog/:articleId',
         element: <ArticlePage />,
       },
       {
         element: <ProtectedRoute />,
         children: [
           {
-            path: '/add-post',
+            path: '/GreenYasin/add-post',
             element: <AddPostPage />,
           },
         ],
       },
       {
-        path: '/services/:categoryName',
+        path: '/GreenYasin/services/:categoryName',
         element: <ServiceDetailPage />,
       },
       {
-        path: '/services/:categoryName/:subServiceTitle',
+        path: '/GreenYasin/services/:categoryName/:subServiceTitle',
         element: <SubServiceDetailPage />,
       },
       {
-        path: '/signup',
+        path: '/GreenYasin/our-team',
+        element: <OurTeamPage />,
+      },
+      {
+        path: '/GreenYasin/signup',
         element: <SignUp />,
       },
       {
-        path: '/login',
+        path: '/GreenYasin/login',
         element: <Login />,
       },
       {
-        path: '/profile',
+        path: '/GreenYasin/profile',
         element: <ProfilePage />,
       },
     ],

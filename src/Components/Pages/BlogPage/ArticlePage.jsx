@@ -3,6 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { blogArticles } from '../../../data/blogData';
 
+const BASE_PATH = '/GreenYasin';
+
 const ArticlePage = () => {
   const { articleId } = useParams();
   const [article, setArticle] = useState(null);
@@ -33,7 +35,7 @@ const ArticlePage = () => {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center pt-32 pb-16 bg-gray-50">
         <p className="text-xl text-red-600 mb-4">Article not found.</p>
-        <Link to="/blog" className="text-emerald-600 hover:underline">Go back to Blog</Link>
+        <Link to={`${BASE_PATH}/blog`} className="text-emerald-600 hover:underline">Go back to Blog</Link>
       </div>
     );
   }
@@ -66,7 +68,10 @@ const ArticlePage = () => {
                   return <p key={index} className="mb-4">{block.text}</p>;
                 case 'heading':
                   const HeadingTag = `h${block.level}`;
-                  return <HeadingTag key={index} className={`text-${6 - block.level}xl font-semibold mt-6 mb-3 text-gray-900`}>{block.text}</HeadingTag>;
+                  return React.createElement(HeadingTag, {
+                    key: index,
+                    className: `text-${6 - block.level}xl font-semibold mt-6 mb-3 text-gray-900`
+                  }, block.text);
                 case 'list':
                   return (
                     <ul key={index} className="list-disc list-inside mb-4 space-y-2">
@@ -95,7 +100,7 @@ const ArticlePage = () => {
         </motion.div>
         <div className="text-center mt-8">
           <Link
-            to="/blog"
+            to={`${BASE_PATH}/blog`}
             className="inline-flex items-center text-emerald-600 font-semibold hover:text-emerald-700 transition-colors duration-300"
           >
             <svg className="mr-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

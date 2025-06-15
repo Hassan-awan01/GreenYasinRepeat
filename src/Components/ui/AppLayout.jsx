@@ -6,13 +6,15 @@ import { Outlet, useNavigation, useLocation } from 'react-router-dom';
 import Footer from './Footer/Footer';
 import { useEffect } from 'react';
 
+const BASE_PATH = '/GreenYasin';
+
 function AppLayout() {
   const navigation = useNavigation();
   const isLoading = navigation.state === 'loading';
   const location = useLocation();
 
   // Determine if the current path is for authentication pages
-  const isAuthPage = location.pathname === '/signup' || location.pathname === '/login';
+  const isAuthPage = location.pathname === `${BASE_PATH}/signup` || location.pathname === `${BASE_PATH}/login`;
 
   useEffect(() => {
     window.scrollTo(0, 0);

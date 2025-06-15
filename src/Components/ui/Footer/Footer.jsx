@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaFacebookF, FaLinkedinIn, FaInstagram, FaYoutube, FaAngleRight } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6'; // For the new 'X' icon
 import footImage from '../../Images/foot.jpg';
@@ -8,7 +8,26 @@ import footImage from '../../Images/foot.jpg';
 import recentPost1 from '../../Images/img8.jpg'; // Example placeholder
 import recentPost2 from '../../Images/img5.jpg'; // Example placeholder
 
+const BASE_PATH = '/GreenYasin';
+
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const scrollToSection = (sectionId) => {
+    navigate(`${BASE_PATH}/`); // Navigate to homepage first
+    setTimeout(() => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const navbarHeight = 80; // Approximate navbar height in pixels
+        const sectionPosition = section.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: sectionPosition - navbarHeight,
+          behavior: 'smooth'
+        });
+      }
+    }, 100); // Small delay to allow navigation to complete
+  };
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -65,27 +84,30 @@ const Footer = () => {
           <h3 className="text-xl font-bold mb-6 uppercase">Explore</h3>
           <ul className="space-y-3">
             <li>
-              <Link to="/about" className="text-gray-300 hover:text-green-400 transition-colors duration-300 flex items-center">
+              <Link to={`${BASE_PATH}/about`} className="text-gray-300 hover:text-green-400 transition-colors duration-300 flex items-center">
                 <FaAngleRight className="text-green-400 mr-2" /> About Us
               </Link>
             </li>
             <li>
-              <Link to="#" className="text-gray-300 hover:text-green-400 transition-colors duration-300 flex items-center">
+              <Link to={`${BASE_PATH}/our-team`} className="text-gray-300 hover:text-green-400 transition-colors duration-300 flex items-center">
                 <FaAngleRight className="text-green-400 mr-2" /> Meet Our Team
               </Link>
             </li>
             <li>
-              <Link to="/blog" className="text-gray-300 hover:text-green-400 transition-colors duration-300 flex items-center">
+              <Link to={`${BASE_PATH}/blog`} className="text-gray-300 hover:text-green-400 transition-colors duration-300 flex items-center">
                 <FaAngleRight className="text-green-400 mr-2" /> Blog
               </Link>
             </li>
             <li>
-              <Link to="/services/All%20Services" className="text-gray-300 hover:text-green-400 transition-colors duration-300 flex items-center">
+              <a
+                onClick={() => scrollToSection('project-section')}
+                className="text-gray-300 hover:text-green-400 transition-colors duration-300 flex items-center cursor-pointer"
+              >
                 <FaAngleRight className="text-green-400 mr-2" /> Services
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="/contact" className="text-gray-300 hover:text-green-400 transition-colors duration-300 flex items-center">
+              <Link to={`${BASE_PATH}/contact`} className="text-gray-300 hover:text-green-400 transition-colors duration-300 flex items-center">
                 <FaAngleRight className="text-green-400 mr-2" /> Contact Us
               </Link>
             </li>

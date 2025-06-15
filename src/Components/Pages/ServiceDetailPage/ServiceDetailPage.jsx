@@ -6,6 +6,8 @@ import { motion } from 'framer-motion';
 import SubServiceDropdown from '../../Shared/SubServiceDropdown';
 import SectionHeading from '../../Shared/SectionHeading';
 
+const BASE_PATH = '/GreenYasin';
+
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -153,7 +155,7 @@ const ServiceDetailPage = () => {
             </div>
           </div>
           <Link
-            to="/contact"
+            to={`${BASE_PATH}/contact`}
             className="mt-8 inline-block bg-white text-emerald-700 px-8 py-4 rounded-full font-semibold text-lg shadow-lg transition-all hover:bg-gray-100 hover:scale-105"
           >
             Get In Touch Now

@@ -4,17 +4,19 @@ import { auth } from '../../../firebase';
 import { useState, useEffect } from 'react';
 import { FaUser } from 'react-icons/fa';
 
+const BASE_PATH = '/GreenYasin';
+
 const DeskNavLink = ({ to, children }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-  <Link
-    to={to}
+    <Link
+      to={`${BASE_PATH}${to}`}
       className="relative inline-block px-4 py-2 text-gray-700 transition-colors hover:text-emerald-600"
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-  >
-    {children}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {children}
       <motion.div
         className="absolute bottom-0 left-0 h-8 bg-emerald-600 z-10"
         initial={{ scaleX: 0 }}
@@ -22,8 +24,8 @@ const DeskNavLink = ({ to, children }) => {
         transition={{ duration: 0.3 }}
         style={{ originX: 0 }}
       />
-  </Link>
-);
+    </Link>
+  );
 };
 
 const DesktopMenu = () => {
@@ -41,15 +43,15 @@ const DesktopMenu = () => {
 
   return (
     <div className="flex items-center space-x-8">
-    <DeskNavLink to="/">Home</DeskNavLink>
-    <DeskNavLink to="/about">About</DeskNavLink>
+      <DeskNavLink to="/">Home</DeskNavLink>
+      <DeskNavLink to="/about">About</DeskNavLink>
       <DeskNavLink to="/our-work">Our Work</DeskNavLink>
-    <DeskNavLink to="/blog">Blog</DeskNavLink>
-    <DeskNavLink to="/contact">Contact</DeskNavLink>
+      <DeskNavLink to="/blog">Blog</DeskNavLink>
+      <DeskNavLink to="/contact">Contact</DeskNavLink>
       {!loading && (
         user ? (
           <Link
-            to="/profile"
+            to={`${BASE_PATH}/profile`}
             className="group relative ml-4 overflow-hidden rounded-full transition-all duration-300 hover:ring-2 hover:ring-emerald-500"
           >
             {user.photoURL ? (
@@ -65,10 +67,10 @@ const DesktopMenu = () => {
             )}
           </Link>
         ) : (
-    <Link
-            to="/signup"
+          <Link
+            to={`${BASE_PATH}/signup`}
             className="group relative ml-4 overflow-hidden rounded-full bg-emerald-600 px-6 py-2.5 text-base font-medium text-white transition-all duration-300 hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-500/30"
-    >
+          >
             <span className="relative z-10">Sign Up</span>
             <motion.div
               className="absolute inset-0 bg-emerald-500"
@@ -76,11 +78,11 @@ const DesktopMenu = () => {
               whileHover={{ x: 0 }}
               transition={{ duration: 0.3 }}
             />
-    </Link>
+          </Link>
         )
       )}
-  </div>
-);
+    </div>
+  );
 };
 
 export default DesktopMenu;

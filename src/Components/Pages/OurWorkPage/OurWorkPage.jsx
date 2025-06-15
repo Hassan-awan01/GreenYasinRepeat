@@ -4,16 +4,19 @@ import { FaLeaf, FaWater, FaSeedling, FaRecycle, FaIndustry } from 'react-icons/
 import { Link } from 'react-router-dom';
 import SectionHeading from '../../Shared/SectionHeading'; // Import SectionHeading
 
+const BASE_PATH = '/GreenYasin';
+
 // Import project images
-import img1 from '../../Images/ourworkimgs/IMG-20250613-WA0041.jpg';
-import img2 from '../../Images/ourworkimgs/IMG-20250613-WA0040.jpg';
-import img3 from '../../Images/ourworkimgs/IMG-20250613-WA0036.jpg';
-import img4 from '../../Images/ourworkimgs/IMG-20250613-WA0030.jpg';
-import img5 from '../../Images/ourworkimgs/IMG-20250613-WA0025.jpg';
-import img6 from '../../Images/ourworkimgs/IMG-20250613-WA0023.jpg';
-import img7 from '../../Images/ourworkimgs/IMG-20250613-WA0024.jpg';
-import img8 from '../../Images/ourworkimgs/IMG-20250613-WA0022.jpg';
-import img9 from '../../Images/ourworkimgs/IMG-20250613-WA0016.jpg';
+import img1 from '../../Images/img10.jpg';
+import img2 from '../../Images/img11.jpg';
+import img3 from '../../Images/img12.jpg';
+import img4 from '../../Images/img13.jpg';
+import img5 from '../../Images/img14.jpg';
+import img6 from '../../Images/img15.jpg';
+import img7 from '../../Images/img16.jpg';
+import img8 from '../../Images/img17.jpg';
+import img9 from '../../Images/img18.jpg';
+
 
 export const categories = [
   { id: 'all', name: 'All Projects', icon: <FaLeaf className="text-2xl" /> },
@@ -153,7 +156,7 @@ const OurWorkPage = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
-              <Link to={`/our-work/${project.id}`} className="block">
+              <Link to={`${BASE_PATH}/our-work/${project.id}`} className="block">
                 <div className="relative h-64 overflow-hidden">
                   <img
                     src={project.image}

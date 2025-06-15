@@ -12,6 +12,8 @@ import bg from '../../Images/bg.svg';
 import logo from '../../Images/logo.png';
 import SectionHeading from '../../Shared/SectionHeading';
 
+const BASE_PATH = '/GreenYasin';
+
 const SignUp = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -76,7 +78,7 @@ const SignUp = () => {
         displayName: formData.fullName
       });
       
-      navigate('/');
+      navigate(`${BASE_PATH}/`);
       
     } catch (error) {
       console.error('Signup error:', error);
@@ -103,7 +105,7 @@ const SignUp = () => {
       });
       
       await signInWithPopup(auth, provider);
-      navigate('/');
+      navigate(`${BASE_PATH}/`);
       
     } catch (error) {
       console.error('Google sign in error:', error.code);
@@ -127,7 +129,7 @@ const SignUp = () => {
 
       <div className="flex flex-col justify-center items-center text-center w-full md:w-auto">
         <form onSubmit={handleSubmit} className="w-full max-w-[360px] md:max-w-[290px] mx-auto">
-          <Link to="/" className="flex justify-center mb-6">
+          <Link to={`${BASE_PATH}/`} className="flex justify-center mb-6">
             <img src={logo} alt="Green Yasin Logo" className="h-16 w-auto" />
           </Link>
           <SectionHeading title="Sign Up" highlightWord="Up" className="!my-4 md:!my-2" />
@@ -138,18 +140,19 @@ const SignUp = () => {
               <i className="fas fa-user"></i>
             </div>
             <div className="relative flex-grow h-[45px]">
-              <h5 className={`absolute left-2 text-[#999] text-lg transition-all duration-300 ${
-                formData.fullName !== '' ? 'top-[-5px] text-base' : 'top-1/2 -translate-y-1/2'
+              <h5 className={`absolute left-2 text-[#999] text-base transition-all duration-300 ${
+                formData.fullName !== '' ? 'top-[-5px] text-sm' : 'top-1/2 -translate-y-1/2'
               }`}>Full Name</h5>
               <input
                 type="text"
                 id="fullName"
                 name="fullName"
-                className="absolute left-0 top-0 w-full h-full border-none outline-none bg-none pl-2 py-0.5 text-xl text-[#555] font-poppins"
+                className="absolute left-0 top-0 w-full h-full border-none outline-none bg-none pl-2 py-0.5 text-base text-[#555] font-poppins placeholder-gray-400"
                 value={formData.fullName}
                 onChange={handleChange}
                 disabled={loading}
                 required
+                placeholder="Enter your full name"
               />
             </div>
           </div>
@@ -160,18 +163,19 @@ const SignUp = () => {
               <i className="fas fa-envelope"></i>
             </div>
             <div className="relative flex-grow h-[45px]">
-              <h5 className={`absolute left-2 text-[#999] text-lg transition-all duration-300 ${
-                formData.email !== '' ? 'top-[-5px] text-base' : 'top-1/2 -translate-y-1/2'
+              <h5 className={`absolute left-2 text-[#999] text-base transition-all duration-300 ${
+                formData.email !== '' ? 'top-[-5px] text-sm' : 'top-1/2 -translate-y-1/2'
               }`}>Email</h5>
               <input
                 type="email"
                 id="email"
                 name="email"
-                className="absolute left-0 top-0 w-full h-full border-none outline-none bg-none pl-2 py-0.5 text-xl text-[#555] font-poppins"
+                className="absolute left-0 top-0 w-full h-full border-none outline-none bg-none pl-2 py-0.5 text-base text-[#555] font-poppins placeholder-gray-400"
                 value={formData.email}
                 onChange={handleChange}
                 disabled={loading}
                 required
+                placeholder="Enter your email"
               />
             </div>
           </div>
@@ -182,18 +186,19 @@ const SignUp = () => {
               <i className="fas fa-lock"></i>
             </div>
             <div className="relative flex-grow h-[45px]">
-              <h5 className={`absolute left-2 text-[#999] text-lg transition-all duration-300 ${
-                formData.password !== '' ? 'top-[-5px] text-base' : 'top-1/2 -translate-y-1/2'
+              <h5 className={`absolute left-2 text-[#999] text-base transition-all duration-300 ${
+                formData.password !== '' ? 'top-[-5px] text-sm' : 'top-1/2 -translate-y-1/2'
               }`}>Password</h5>
               <input
                 type="password"
                 id="password"
                 name="password"
-                className="absolute left-0 top-0 w-full h-full border-none outline-none bg-none pl-2 py-0.5 text-xl text-[#555] font-poppins"
+                className="absolute left-0 top-0 w-full h-full border-none outline-none bg-none pl-2 py-0.5 text-base text-[#555] font-poppins placeholder-gray-400"
                 value={formData.password}
                 onChange={handleChange}
                 disabled={loading}
                 required
+                placeholder="Enter your password"
               />
             </div>
           </div>
@@ -204,18 +209,19 @@ const SignUp = () => {
               <i className="fas fa-lock"></i>
             </div>
             <div className="relative flex-grow h-[45px]">
-              <h5 className={`absolute left-2 text-[#999] text-lg transition-all duration-300 ${
-                formData.confirmPassword !== '' ? 'top-[-5px] text-base' : 'top-1/2 -translate-y-1/2'
+              <h5 className={`absolute left-2 text-[#999] text-base transition-all duration-300 ${
+                formData.confirmPassword !== '' ? 'top-[-5px] text-sm' : 'top-1/2 -translate-y-1/2'
               }`}>Confirm Password</h5>
               <input
                 type="password"
                 id="confirmPassword"
                 name="confirmPassword"
-                className="absolute left-0 top-0 w-full h-full border-none outline-none bg-none pl-2 py-0.5 text-xl text-[#555] font-poppins"
+                className="absolute left-0 top-0 w-full h-full border-none outline-none bg-none pl-2 py-0.5 text-base text-[#555] font-poppins placeholder-gray-400"
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 disabled={loading}
                 required
+                placeholder="Confirm your password"
               />
             </div>
           </div>
@@ -242,7 +248,7 @@ const SignUp = () => {
           </button>
 
           <p className="text-center mt-4 text-[#7f8c8d]">
-            Already have an account? <Link to="/login" className="text-[#38d39f] no-underline inline hover:underline">Log In</Link>
+            Already have an account? <Link to={`${BASE_PATH}/login`} className="text-[#38d39f] no-underline inline hover:underline">Log In</Link>
           </p>
         </form>
       </div>

@@ -25,4 +25,13 @@ export default defineConfig({
       },
     }),
   ],
+  assetsInclude: ['**/*.jpg', '**/*.png', '**/*.svg'],
+  build: {
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name][extname]'
+      }
+    }
+  }
 });

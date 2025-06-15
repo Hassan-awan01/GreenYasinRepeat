@@ -8,11 +8,13 @@ import img7 from '../Images/img7.jpg';
 import img8 from '../Images/img8.jpg';
 import img9 from '../Images/img9.jpg';
 
+const BASE_PATH = '/GreenYasin';
+
 const projectsData = [
   {
     category: 'Water Monitoring',
     icon: 'FaWater',
-    link: '/services/water-monitoring',
+    link: `${BASE_PATH}/services/water-monitoring`,
     mainImage: img1,
     mainDescription: `Water monitoring is crucial for environmental protection and public health. We provide comprehensive services to assess water quality, detect pollutants, and ensure compliance with environmental regulations. Our expertise covers everything from drinking water safety to industrial wastewater management, helping clients maintain sustainable water practices.`, 
     examplesHeader: 'Some Examples Of Our Water Monitoring Services:',
@@ -61,7 +63,7 @@ const projectsData = [
   {
     category: 'Air Quality Analysis',
     icon: 'FaCloud',
-    link: '/services/air-quality-analysis',
+    link: `${BASE_PATH}/services/air-quality-analysis`,
     mainImage: img2,
     mainDescription: `Air quality analysis is vital for understanding and mitigating atmospheric pollution. We offer advanced monitoring and assessment services to identify sources of air pollution, measure pollutant concentrations, and provide strategies for improving air quality. Our services help industries, urban planners, and communities create healthier environments.`, 
     examplesHeader: 'Some Examples Of Our Air Quality Analysis Services:',
@@ -110,7 +112,7 @@ const projectsData = [
   {
     category: 'Noise & Hygiene',
     icon: 'FaHeadphonesAlt',
-    link: '/services/noise-hygiene',
+    link: `${BASE_PATH}/services/noise-hygiene`,
     mainImage: img3,
     mainDescription: `Noise and occupational hygiene monitoring are essential for ensuring a safe and healthy working environment. We measure noise levels, assess workplace hazards, and provide solutions to mitigate risks, protecting employees from long-term health issues and ensuring regulatory compliance.`, 
     examplesHeader: 'Some Examples Of Our Noise & Hygiene Services:',
@@ -159,7 +161,7 @@ const projectsData = [
   {
     category: 'Soil Testing',
     icon: 'FaLeaf',
-    link: '/services/soil-testing',
+    link: `${BASE_PATH}/services/soil-testing`,
     mainImage: img4,
     mainDescription: `Soil testing is fundamental for agricultural productivity, environmental remediation, and construction projects. We conduct comprehensive analyses of soil composition, nutrient levels, and contaminant presence, providing insights crucial for sustainable land management and informed decision-making.`, 
     examplesHeader: 'Some Examples Of Our Soil Testing Services:',
@@ -211,47 +213,47 @@ export const servicesData = [
   {
     title: 'Environmental Laboratory',
     icon: 'FaFlask',
-    link: '/services/environmental-laboratory',
+    link: `${BASE_PATH}/services/environmental-laboratory`,
   },
   {
     title: 'Environmental Studies & Audit',
     icon: 'FaLeaf',
-    link: '/services/environmental-studies-audit',
+    link: `${BASE_PATH}/services/environmental-studies-audit`,
   },
   {
     title: 'Certifications',
     icon: 'FaAward',
-    link: '/services/certifications',
+    link: `${BASE_PATH}/services/certifications`,
   },
   {
     title: 'Cleaner Production Techniques',
     icon: 'FaIndustry',
-    link: '/services/cleaner-production-techniques',
+    link: `${BASE_PATH}/services/cleaner-production-techniques`,
   },
   {
     title: 'Pollution Abatement Technologies',
     icon: 'FaFilter',
-    link: '/services/pollution-abatement-technologies',
+    link: `${BASE_PATH}/services/pollution-abatement-technologies`,
   },
   {
     title: 'Geo-Technical Investigations',
     icon: 'FaHammer',
-    link: '/services/geo-technical-investigations',
+    link: `${BASE_PATH}/services/geo-technical-investigations`,
   },
   {
     title: 'Occupational Health & Safety',
     icon: 'FaHardHat',
-    link: '/services/occupational-health-safety',
+    link: `${BASE_PATH}/services/occupational-health-safety`,
   },
   {
     title: 'Waste Management & Disposal',
     icon: 'FaRecycle',
-    link: '/services/waste-management-disposal',
+    link: `${BASE_PATH}/services/waste-management-disposal`,
   },
   {
     title: 'Applied Research and Trainings',
     icon: 'FaBook',
-    link: '/services/applied-research-trainings',
+    link: `${BASE_PATH}/services/applied-research-trainings`,
   },
 ];
 

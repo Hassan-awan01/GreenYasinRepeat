@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { FaLeaf, FaWater, FaRecycle, FaIndustry } from 'react-icons/fa';
 import SectionHeading from '../../Shared/SectionHeading';
 
+const BASE_PATH = '/GreenYasin';
+
 const projects = [
   {
     id: 1,
@@ -42,7 +44,7 @@ const WorkSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {latestProjects.map((project, index) => (
             <Link 
-              to={`/our-work/${project.id}`}
+              to={`${BASE_PATH}/our-work/${project.id}`}
               className="group relative overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl block"
             >
               <div className="relative h-64 overflow-hidden">
@@ -73,7 +75,7 @@ const WorkSection = () => {
           className="text-center mt-12"
         >
           <Link
-            to="/our-work"
+            to={`${BASE_PATH}/our-work`}
             className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-6 py-3 text-base font-medium text-white transition-all duration-300 hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-500/30"
           >
             View More Projects

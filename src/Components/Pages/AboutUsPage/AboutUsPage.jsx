@@ -4,6 +4,8 @@ import { FaCheckCircle, FaQuestionCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import SectionHeading from '../../Shared/SectionHeading';
 
+const BASE_PATH = '/GreenYasin';
+
 // Placeholder images - you'll replace these with your actual image paths
 import aboutUsHeroImage from '../../Images/img1.jpg'; // Example placeholder
 import greenerFutureImage from '../../Images/img2.jpg'; // Example placeholder
@@ -129,7 +131,7 @@ const AboutUsPage = () => {
               </li>
             </ul>
             <Link
-              to="/#our-aim-section"
+              to={`${BASE_PATH}/#our-aim-section`}
               className="inline-block mt-8 px-8 py-3 bg-green-600 text-white font-semibold rounded-full shadow-lg hover:bg-green-700 transition-colors duration-300 mx-auto"
             >
               Read More

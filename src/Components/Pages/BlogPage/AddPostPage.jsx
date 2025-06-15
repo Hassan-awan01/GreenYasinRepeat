@@ -6,6 +6,8 @@ import { motion } from 'framer-motion';
 import { blogArticles } from '../../../data/blogData'; // Import to simulate adding
 import SectionHeading from '../../Shared/SectionHeading'; // Import SectionHeading
 
+const BASE_PATH = '/GreenYasin';
+
 const AddPostPage = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
@@ -36,7 +38,7 @@ const AddPostPage = () => {
     blogArticles.unshift(newArticle); // Add to the beginning for latest posts
 
     alert('Post added successfully!');
-    navigate('/blog'); // Navigate back to the blog page
+    navigate(`${BASE_PATH}/blog`); // Navigate back to the blog page
   };
 
   return (
@@ -87,7 +89,7 @@ const AddPostPage = () => {
               <label htmlFor="excerpt" className="block text-lg font-medium text-gray-700">Excerpt</label>
               <textarea
                 id="excerpt"
-                rows="3"
+                rows={3}
                 className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500"
                 value={excerpt}
                 onChange={(e) => setExcerpt(e.target.value)}
@@ -98,7 +100,7 @@ const AddPostPage = () => {
               <label htmlFor="content" className="block text-lg font-medium text-gray-700">Content</label>
               <textarea
                 id="content"
-                rows="10"
+                rows={10}
                 className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}

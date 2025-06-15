@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { projects, categories } from './OurWorkPage'; // Assuming projects and categories are exported from OurWorkPage
 import SectionHeading from '../../Shared/SectionHeading'; // Import SectionHeading
 
+const BASE_PATH = '/GreenYasin';
+
 const ProjectDetailPage = () => {
   const { projectId } = useParams();
   const [project, setProject] = useState(null);
@@ -33,7 +35,7 @@ const ProjectDetailPage = () => {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center pt-32 pb-16 bg-gray-50">
         <p className="text-xl text-red-600 mb-4">Project not found.</p>
-        <Link to="/our-work" className="text-emerald-600 hover:underline">Go back to Our Work</Link>
+        <Link to={`${BASE_PATH}/our-work`} className="text-emerald-600 hover:underline">Go back to Our Work</Link>
       </div>
     );
   }
@@ -76,7 +78,7 @@ const ProjectDetailPage = () => {
         </motion.div>
         <div className="text-center mt-8">
           <Link
-            to="/our-work"
+            to={`${BASE_PATH}/our-work`}
             className="inline-flex items-center text-emerald-600 font-semibold hover:text-emerald-700 transition-colors duration-300"
           >
             <svg className="mr-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

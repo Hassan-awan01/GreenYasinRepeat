@@ -4,7 +4,7 @@ import ContactHero from '../ContactPage/ContactHero';
 import ContactSection from './ContactSection';
 const ContactPage = () => {
   return (
-    <div className="md:pt-15">
+    <div className="md:pt-25">
       <ContactHero />
       <ContactSection />
     </div>

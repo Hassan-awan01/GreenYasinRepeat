@@ -19,7 +19,7 @@ const iconComponents = {
 
 const ServicesSection = () => {
   return (
-    <section className="py-16">
+    <section id="our-services-section" className="py-16">
       <div className="global-container">
         <div className="flex flex-wrap justify-center gap-8 py-4">
           {servicesData.map((service, index) => {

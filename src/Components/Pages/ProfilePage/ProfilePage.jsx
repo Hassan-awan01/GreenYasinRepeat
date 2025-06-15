@@ -5,6 +5,8 @@ import { updateProfile, updateEmail, updatePassword } from 'firebase/auth';
 import { motion } from 'framer-motion';
 import { FaUser, FaEnvelope, FaLock, FaSignOutAlt } from 'react-icons/fa';
 
+const BASE_PATH = '/GreenYasin';
+
 const ProfilePage = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
@@ -29,7 +31,7 @@ const ProfilePage = () => {
           email: user.email || ''
         }));
       } else {
-        navigate('/login');
+        navigate(`${BASE_PATH}/login`);
       }
       setLoading(false);
     });
@@ -94,7 +96,7 @@ const ProfilePage = () => {
   const handleSignOut = async () => {
     try {
       await auth.signOut();
-      navigate('/login');
+      navigate(`${BASE_PATH}/login`);
     } catch (error) {
       setError(error.message);
     }

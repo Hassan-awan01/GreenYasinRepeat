@@ -6,6 +6,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import SectionHeading from '../../Shared/SectionHeading';
 
+const BASE_PATH = '/GreenYasin';
+
 // Import images for the slider
 import img1 from '../../Images/img1.jpg';
 import img2 from '../../Images/img2.jpg';
@@ -43,7 +45,7 @@ const AimSection = () => {
             prepare for a changing climate.
           </p>
           <Link
-            to="/about"
+            to={`${BASE_PATH}/about`}
             className="inline-block mt-4 rounded-lg bg-green-600 px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-green-700"
           >
             READ MORE

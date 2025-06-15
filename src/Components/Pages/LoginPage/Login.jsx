@@ -15,6 +15,8 @@ import bg from '../../Images/bg.svg'; // Assuming bg.svg is in the Images folder
 import logo from '../../Images/logo.png'; // Import the logo
 import SectionHeading from '../../Shared/SectionHeading'; // Import SectionHeading
 
+const BASE_PATH = '/GreenYasin';
+
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -85,7 +87,7 @@ const Login = () => {
       axios.defaults.withCredentials = true;
 
       // Navigate to home page after successful login
-      navigate('/');
+      navigate(`${BASE_PATH}/`);
 
     } catch (error) {
       console.error('Login error:', error);
@@ -135,7 +137,7 @@ const Login = () => {
       setAuthResult(userData);
 
       // Navigate to home page after successful Google sign-in
-      navigate('/');
+      navigate(`${BASE_PATH}/`);
 
     } catch (error) {
       console.error('Google sign in error:', error.code);
@@ -171,7 +173,7 @@ const Login = () => {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="w-full max-w-[360px] md:max-w-[290px] mx-auto">
-            <Link to="/" className="flex justify-center mb-6">
+            <Link to={`${BASE_PATH}/`} className="flex justify-center mb-6">
               <img src={logo} alt="Green Yasin Logo" className="h-16 w-auto" />
             </Link>
             <SectionHeading title="Welcome" highlightWord="Welcome" className="!my-4 md:!my-2" />
@@ -182,18 +184,19 @@ const Login = () => {
                 <i className="fas fa-user"></i>
               </div>
               <div className="relative flex-grow h-[45px]">
-                <h5 className={`absolute left-2 text-[#999] text-lg transition-all duration-300 ${
-                  formData.email !== '' ? 'top-[-5px] text-base' : 'top-1/2 -translate-y-1/2'
+                <h5 className={`absolute left-2 text-[#999] text-base transition-all duration-300 ${
+                  formData.email !== '' ? 'top-[-5px] text-sm' : 'top-1/2 -translate-y-1/2'
                 }`}>Email</h5>
                 <input
                   type="email"
                   id="email"
                   name="email"
-                  className="absolute left-0 top-0 w-full h-full border-none outline-none bg-none pl-2 py-0.5 text-xl text-[#555] font-poppins"
+                  className="absolute left-0 top-0 w-full h-full border-none outline-none bg-none pl-2 py-0.5 text-base text-[#555] font-poppins placeholder-gray-400"
                   value={formData.email}
                   onChange={handleChange}
                   disabled={loading}
                   required
+                  placeholder="Enter your email"
                 />
               </div>
             </div>
@@ -204,18 +207,19 @@ const Login = () => {
                 <i className="fas fa-lock"></i>
               </div>
               <div className="relative flex-grow h-[45px]">
-                <h5 className={`absolute left-2 text-[#999] text-lg transition-all duration-300 ${
-                  formData.password !== '' ? 'top-[-5px] text-base' : 'top-1/2 -translate-y-1/2'
+                <h5 className={`absolute left-2 text-[#999] text-base transition-all duration-300 ${
+                  formData.password !== '' ? 'top-[-5px] text-sm' : 'top-1/2 -translate-y-1/2'
                 }`}>Password</h5>
                 <input
                   type="password"
                   id="password"
                   name="password"
-                  className="absolute left-0 top-0 w-full h-full border-none outline-none bg-none pl-2 py-0.5 text-xl text-[#555] font-poppins"
+                  className="absolute left-0 top-0 w-full h-full border-none outline-none bg-none pl-2 py-0.5 text-base text-[#555] font-poppins placeholder-gray-400"
                   value={formData.password}
                   onChange={handleChange}
                   disabled={loading}
                   required
+                  placeholder="Enter your password"
                 />
               </div>
             </div>
@@ -259,7 +263,7 @@ const Login = () => {
             </button>
 
             <p className="text-center mt-4 text-[#7f8c8d]">
-              Don't have an account? <Link to="/signup" className="text-[#38d39f] no-underline inline hover:underline">Sign up</Link>
+              Don't have an account? <Link to={`${BASE_PATH}/signup`} className="text-[#38d39f] no-underline inline hover:underline">Sign up</Link>
             </p>
           </form>
         )}

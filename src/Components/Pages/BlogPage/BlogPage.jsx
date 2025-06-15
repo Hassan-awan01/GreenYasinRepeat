@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { blogArticles } from '../../../data/blogData';
 import SectionHeading from '../../Shared/SectionHeading';
 
+const BASE_PATH = '/GreenYasin';
+
 const BlogPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -34,7 +36,7 @@ const BlogPage = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
           <Link
-            to="/add-post"
+            to={`${BASE_PATH}/add-post`}
             className="mt-6 inline-flex items-center justify-center rounded-full bg-emerald-600 px-6 py-3 text-base font-medium text-white transition-all duration-300 hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-500/30"
           >
             Add New Post
@@ -57,7 +59,7 @@ const BlogPage = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
-                <Link to={`/blog/${article.id}`}>
+                <Link to={`${BASE_PATH}/blog/${article.id}`}>
                   <div className="relative h-52 overflow-hidden">
                     <img
                       src={article.image}
@@ -68,7 +70,7 @@ const BlogPage = () => {
                   </div>
                 </Link>
                 <div className="p-6">
-                  <Link to={`/blog/${article.id}`}>
+                  <Link to={`${BASE_PATH}/blog/${article.id}`}>
                     <h3 className="text-xl font-semibold text-gray-800 mb-2 hover:text-emerald-600 transition-colors duration-300">{article.title}</h3>
                   </Link>
                   <p className="text-gray-600 text-sm mb-3">
@@ -76,7 +78,7 @@ const BlogPage = () => {
                   </p>
                   <p className="text-gray-700 text-base mb-4">{article.excerpt}</p>
                   <Link
-                    to={`/blog/${article.id}`}
+                    to={`${BASE_PATH}/blog/${article.id}`}
                     className="inline-flex items-center text-emerald-600 font-semibold hover:text-emerald-700 transition-colors duration-300"
                   >
                     Read More

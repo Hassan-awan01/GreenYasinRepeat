@@ -18,6 +18,8 @@ import img7 from '../../Images/img7.jpg';
 import img8 from '../../Images/img8.jpg';
 import img9 from '../../Images/img9.jpg';
 
+const BASE_PATH = '/GreenYasin';
+
 const HeroSection = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -123,7 +125,7 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.4, ease: 'easeOut' }}
             >
               <Link
-                to="/signup"
+                to={`${BASE_PATH}/signup`}
                 className="inline-block rounded-full bg-emerald-600 px-10 py-4 text-xl font-semibold shadow-lg transition-all duration-300 hover:bg-emerald-700 hover:shadow-emerald-500/50"
               >
                 Get Started
@@ -131,7 +133,7 @@ const HeroSection = () => {
             </motion.div>
           )}
           <Link
-            to={'/about'}
+            to={`${BASE_PATH}/about`}
             className="inline-block rounded-full border-2 border-emerald-500 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-emerald-500/10"
           >
             Learn More

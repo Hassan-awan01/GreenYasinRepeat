@@ -7,6 +7,8 @@ import ContactBar from './ContactBar';
 import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
 
+const BASE_PATH = '/GreenYasin';
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,7 +38,7 @@ const Navbar = () => {
         <div className="global-container flex h-20 max-w-screen-xl items-center justify-between">
           {/* Logo */}
           <Link
-            to="/"
+            to={`${BASE_PATH}/`}
             className="text-3xl font-bold text-emerald-600 transition-colors hover:text-emerald-700"
           >
             Green Yasin
