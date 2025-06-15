@@ -130,10 +130,14 @@ const OurWorkPage = () => {
             <select
               value={activeCategory}
               onChange={(e) => setActiveCategory(e.target.value)}
-              className="block w-full px-6 py-3 text-lg text-gray-800 bg-white border border-gray-300 rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+              className="block w-full px-6 py-3 text-lg text-gray-800 bg-white border border-emerald-500 rounded-lg shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent transition-all duration-300"
             >
               {categories.map((category) => (
-                <option key={category.id} value={category.id}>
+                <option 
+                  key={category.id} 
+                  value={category.id} 
+                  className="text-gray-800 bg-white hover:bg-emerald-50 py-2 px-4"
+                >
                   {category.name}
                 </option>
               ))}

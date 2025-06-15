@@ -81,7 +81,7 @@ const AboutUsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 md:pt-40 pt-20 pb-16">
+    <div className="min-h-screen bg-gray-50 md:pt-40 pt-[50px] pb-16">
       {/* Hero Section
       <section
         className="relative h-[50vh] bg-cover bg-center flex items-center justify-center text-white hidden md:flex"
@@ -117,7 +117,7 @@ const AboutUsPage = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="md:w-1/2 w-full text-center md:text-left flex flex-col items-center md:items-start px-4 mr-20"
+            className="md:w-1/2 w-full text-center md:text-left flex flex-col items-center md:items-start px-4 mr-[100px]"
           >
             <SectionHeading title="About Us" highlightWord="Us" textAlignment="center" className="!mb-6 w-full"/>
             <p className="text-gray-600 leading-relaxed mb-6 text-center md:text-left w-full">
@@ -229,7 +229,7 @@ const AboutUsPage = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="md:w-1/2 w-full text-center md:text-left px-4 mr-20"
+            className="md:w-1/2 w-full text-center md:text-left px-4 mr-[90px]"
           >
             <h2 className="text-sm font-semibold text-green-600 uppercase mb-2 text-center md:text-left">
               FAQs

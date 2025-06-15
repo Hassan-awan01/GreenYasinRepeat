@@ -68,7 +68,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
 
       {/* Content with Animation */}
-      <div className="global-container relative z-10 flex h-screen max-w-7xl flex-col items-center justify-center text-center pt-20 md:pt-0">
+      <div className="global-container relative z-10 flex h-screen max-w-7xl flex-col items-center justify-center text-center pt-4 md:pt-0 transform -translate-y-4 md:translate-y-0">
         {/* Eco-friendly Icons */}
         <motion.div 
           className="mb-8 flex space-x-6"
