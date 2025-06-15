@@ -19,8 +19,7 @@ const SignUp = () => {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
-    password: '',
-    confirmPassword: ''
+    password: ''
   });
 
   const [error, setError] = useState('');
@@ -40,12 +39,8 @@ const SignUp = () => {
   };
 
   const validateForm = () => {
-    if (!formData.fullName || !formData.email || !formData.password || !formData.confirmPassword) {
+    if (!formData.fullName || !formData.email || !formData.password) {
       setError('All fields are required');
-      return false;
-    }
-    if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
       return false;
     }
     if (formData.password.length < 6) {
@@ -122,12 +117,12 @@ const SignUp = () => {
   };
 
   return (
-    <div className="w-screen h-screen grid grid-cols-1 md:grid-cols-2 md:gap-20 lg:gap-28 px-8 font-poppins overflow-hidden">
+    <div className="w-screen min-h-screen grid grid-cols-1 md:grid-cols-2 md:gap-20 lg:gap-28 px-8 font-poppins">
       <div className="flex justify-end items-center hidden md:flex">
         <img src={bg} alt="Background" className="w-[500px] lg:w-[400px]" />
       </div>
 
-      <div className="flex flex-col justify-center items-center text-center w-full md:w-auto">
+      <div className="flex flex-col justify-center items-center text-center w-full md:w-auto min-h-screen md:min-h-0 overflow-y-auto">
         <form onSubmit={handleSubmit} className="w-full max-w-[360px] md:max-w-[290px] mx-auto">
           <Link to={`${BASE_PATH}/`} className="flex justify-center mb-6">
             <img src={logo} alt="Green Yasin Logo" className="h-16 w-auto" />
@@ -203,52 +198,37 @@ const SignUp = () => {
             </div>
           </div>
 
-          {/* Confirm Password Input */}
-          <div className="group relative flex items-center my-6 py-1 border-b-2 border-[#d9d39f] focus-within:border-[#38d39f] before:content-[''] before:absolute before:bottom-[-2px] before:right-1/2 before:w-0 before:h-[2px] before:bg-[#38d39f] before:transition-all before:duration-400 group-focus-within:before:w-1/2 after:content-[''] after:absolute after:bottom-[-2px] after:left-1/2 after:w-0 after:h-[2px] after:bg-[#38d39f] after:transition-all after:duration-400 group-focus-within:after:w-1/2">
-            <div className="flex-shrink-0 flex justify-center items-center text-[#d9d39f] group-focus-within:text-[#38d39f] transition-colors duration-300 w-8">
-              <i className="fas fa-lock"></i>
-            </div>
-            <div className="relative flex-grow h-[45px]">
-              <h5 className={`absolute left-2 text-[#999] text-base transition-all duration-300 ${
-                formData.confirmPassword !== '' ? 'top-[-5px] text-sm' : 'top-1/2 -translate-y-1/2'
-              }`}>Confirm Password</h5>
-              <input
-                type="password"
-                id="confirmPassword"
-                name="confirmPassword"
-                className="absolute left-0 top-0 w-full h-full border-none outline-none bg-none pl-2 py-0.5 text-base text-[#555] font-poppins placeholder-gray-400"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                disabled={loading}
-                required
-                placeholder="Confirm your password"
-              />
-            </div>
-          </div>
+          {error && <p className="text-red-500 text-sm mt-4">{error}</p>}
 
-          {error && <p className="text-[#e74c3c] my-2 text-sm text-center">{error}</p>}
-
-          <button type="submit" className="block w-full h-[50px] rounded-[25px] outline-none border-none bg-gradient-to-r from-[#32be8f] via-[#38d39f] to-[#32be8f] bg-[200%] text-xl text-white uppercase my-4 cursor-pointer transition-all duration-500 hover:bg-right disabled:bg-[#95a5a6] disabled:cursor-not-allowed disabled:bg-none" disabled={loading}>
-            {loading ? 'Creating Account...' : 'Sign Up'}
+          <button
+            type="submit"
+            className="w-full py-2 bg-emerald-600 text-white rounded-full transition-all duration-300 hover:bg-emerald-700 mt-6 text-xl"
+            disabled={loading}
+          >
+            {loading ? 'Signing Up...' : 'Sign Up'}
           </button>
 
           <div className="flex items-center my-6">
-            <div className="flex-grow border-t border-[#ddd]"></div>
-            <span className="flex-shrink-0 bg-white px-2 text-[#7f8c8d] text-sm">or continue with</span>
-            <div className="flex-grow border-t border-[#ddd]"></div>
+            <hr className="flex-grow border-t-2 border-gray-300" />
+            <span className="px-4 text-gray-500">OR</span>
+            <hr className="flex-grow border-t-2 border-gray-300" />
           </div>
 
           <button
             type="button"
-            className="w-full py-3 border border-[#ddd] rounded-[25px] bg-white text-base cursor-pointer transition-colors duration-300 mb-4 text-[#555] hover:bg-[#f5f6f7] disabled:bg-[#95a5a6] disabled:cursor-not-allowed"
             onClick={handleGoogleSignIn}
+            className="w-full py-2 border-2 border-emerald-600 text-emerald-600 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-emerald-50"
             disabled={loading}
           >
-            Continue with Google
+            <i className="fab fa-google mr-2"></i>
+            Sign Up with Google
           </button>
 
-          <p className="text-center mt-4 text-[#7f8c8d]">
-            Already have an account? <Link to={`${BASE_PATH}/login`} className="text-[#38d39f] no-underline inline hover:underline">Log In</Link>
+          <p className="mt-4 text-gray-600 text-center">
+            Already have an account?{" "}
+            <Link to={`${BASE_PATH}/login`} className="text-emerald-600 font-semibold hover:underline">
+              Log In
+            </Link>
           </p>
         </form>
       </div>
