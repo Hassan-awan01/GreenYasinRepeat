@@ -37,7 +37,7 @@ const BlogPage = () => {
           />
           <Link
             to={`${BASE_PATH}/add-post`}
-            className="mt-6 inline-flex items-center justify-center rounded-full bg-emerald-600 px-6 py-3 text-base font-medium text-white transition-all duration-300 hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-500/30"
+            className="mt-6 inline-flex items-center justify-center rounded-full bg-emerald-600 px-4 py-2 md:ml-4 text-base font-medium text-white transition-all duration-300 hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-500/30"
           >
             Add New Post
           </Link>

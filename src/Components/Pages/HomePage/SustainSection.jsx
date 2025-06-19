@@ -29,7 +29,7 @@ const SustainabilitySection = () => {
     <section className="bg-white py-16">
       <div className="global-container grid items-center gap-10 md:grid-cols-2">
         {/* Left Side - Image Slider */}
-        <div className="hidden md:block h-64 w-96 flex-shrink-0 md:h-80 md:w-[30rem] overflow-hidden shadow-lg rounded-lg">
+        <div className="hidden md:block h-64 w-96 flex-shrink-0 md:h-80 md:w-[30rem] overflow-hidden shadow-lg rounded-lg md:ml-12">
           <Slider {...settings}>
             {sliderImages.map((image, index) => (
               <div key={index}>
@@ -46,7 +46,7 @@ const SustainabilitySection = () => {
         {/* Right Side - Text */}
         <div>
           <SectionHeading title="Strategic Sustainability:" highlightWord="Sustainability:" className="!text-left !mb-6" textAlignment="left" />
-          <p className="mt-4 leading-relaxed text-gray-600">
+          <p className="mt-4 leading-relaxed text-gray-600 md:mr-10">
             We work with clients from all sectors to ensure long-term
             environmental, social, and economic sustainability through early
             integration of sustainability considerations in policy, planning,
