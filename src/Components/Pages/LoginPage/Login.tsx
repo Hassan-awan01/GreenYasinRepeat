@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-import bg from '../../Images/bg.svg'; // Assuming bg.svg is in the Images folder
-import logo from '../../Images/logo.png'; // Import the logo
-import SectionHeading from '../../Shared/SectionHeading'; // Import SectionHeading
+import bg from '../../Images/bg.svg';
+import logo from '../../Images/logo.png';
+import SectionHeading from '../../Shared/SectionHeading';
 import { useAuthActions } from '@convex-dev/auth/react';
-import { useQuery } from 'convex/react';
-import { api } from '../../../../convex/_generated/api';
+import { Loader } from 'lucide-react';
+import { useCurrentMember } from '@/features/hooks/use-get-current-member';
 import { useProtectRoute } from '@/features/hooks/use-protect-route';
 
 const BASE_PATH = '/GreenYasin';
@@ -14,34 +14,49 @@ const BASE_PATH = '/GreenYasin';
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from || '/';
+  const from = location.state?.from || `${BASE_PATH}/`;
 
   const { signIn } = useAuthActions();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [pending, setPending] = useState(false);
   const [error, setError] = useState('');
+
   const [_user, setUser] = useProtectRoute();
+  const { data: user, isLoading: userLoading } = useCurrentMember();
 
   const onSignInSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setPending(true);
+    setError('');
+
     try {
       await signIn('password', {
         email,
         password,
         flow: 'signIn',
       });
-
-      const userData = await useQuery(api.users.current, {});
-      setUser(userData);
-      navigate(from);
-    } catch (error) {
-      setError('Something Went Wrong');
+    } catch (err) {
+      setError('Invalid email or password');
     } finally {
       setPending(false);
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      setUser(user); // setUser only once after login
+      navigate(from, { replace: true });
+    }
+  }, [user, setUser, navigate, from]);
+
+  if (userLoading) {
+    return (
+      <div className="flex h-full flex-col items-center justify-center">
+        <Loader className="text-muted-foreground size-5 animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <div className="font-poppins grid h-screen w-screen grid-cols-1 overflow-hidden px-8 md:grid-cols-2 md:gap-20 lg:gap-28">
@@ -84,9 +99,7 @@ const Login = () => {
                 name="email"
                 className="font-poppins absolute left-0 top-0 h-full w-full border-none bg-none py-0.5 pl-2 text-base text-[#555] placeholder-gray-400 outline-none"
                 value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
+                onChange={(e) => setEmail(e.target.value)}
                 disabled={pending}
                 required
                 placeholder="Enter your email"
@@ -115,9 +128,7 @@ const Login = () => {
                 name="password"
                 className="font-poppins absolute left-0 top-0 h-full w-full border-none bg-none py-0.5 pl-2 text-base text-[#555] placeholder-gray-400 outline-none"
                 value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
+                onChange={(e) => setPassword(e.target.value)}
                 disabled={pending}
                 required
                 placeholder="Enter your password"
@@ -128,7 +139,7 @@ const Login = () => {
           <div className="my-4 flex items-center justify-between">
             <Link
               to="/forgot-password"
-              className="block text-right text-sm text-[#999] no-underline transition-colors duration-300 hover:text-[#38d39f]"
+              className="block text-right text-sm text-[#999] hover:text-[#38d39f]"
             >
               Forgot Password?
             </Link>
@@ -140,25 +151,25 @@ const Login = () => {
 
           <button
             type="submit"
-            className="my-4 block h-[50px] w-full cursor-pointer rounded-[25px] border-none bg-gradient-to-r from-[#32be8f] via-[#38d39f] to-[#32be8f] bg-[200%] text-xl uppercase text-white outline-none transition-all duration-500 hover:bg-right disabled:cursor-not-allowed disabled:bg-[#95a5a6] disabled:bg-none"
+            className="my-4 block h-[50px] w-full cursor-pointer rounded-[25px] bg-gradient-to-r from-[#32be8f] via-[#38d39f] to-[#32be8f] text-xl text-white transition-all hover:bg-right disabled:cursor-not-allowed disabled:bg-[#95a5a6]"
             disabled={pending}
           >
             {pending ? 'Logging in...' : 'Login'}
           </button>
 
           <div className="my-6 flex items-center">
-            <div className="flex-grow border-t border-[#ddd]"></div>
+            <div className="flex-grow border-t border-[#ddd]" />
             <span className="flex-shrink-0 bg-white px-2 text-sm text-[#7f8c8d]">
               or continue with
             </span>
-            <div className="flex-grow border-t border-[#ddd]"></div>
+            <div className="flex-grow border-t border-[#ddd]" />
           </div>
 
           <p className="mt-4 text-center text-[#7f8c8d]">
             Don't have an account?{' '}
             <Link
               to={`${BASE_PATH}/signup`}
-              className="inline text-[#38d39f] no-underline hover:underline"
+              className="text-[#38d39f] hover:underline"
             >
               Sign up
             </Link>

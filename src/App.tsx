@@ -16,6 +16,8 @@ import ProfilePage from './Components/Pages/ProfilePage/ProfilePage';
 import ProjectDetailPage from './Components/Pages/OurWorkPage/ProjectDetailPage';
 import ProtectedRoute from './Components/Auth/ProtectedRoute';
 import OurTeamPage from './Components/Pages/OurTeamPage/OurTeamPage';
+import UpdateBlogPage from './Components/Pages/BlogPage/UpdateBlogPage';
+import BlogsPage from './Components/Pages/BlogPage/BlogsPage';
 
 const router = createBrowserRouter([
   {
@@ -43,7 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/GreenYasin/blog',
-        element: <BlogPage />,
+        element: <BlogsPage />,
       },
       {
         path: '/GreenYasin/blog/:articleId',

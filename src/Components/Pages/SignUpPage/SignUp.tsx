@@ -7,6 +7,8 @@ import { useAuthActions } from '@convex-dev/auth/react';
 import { useProtectRoute } from '@/features/hooks/use-protect-route';
 import { api } from '@/../convex/_generated/api';
 import { useQuery } from 'convex/react';
+import { useCurrentMember } from '@/features/hooks/use-get-current-member';
+import { Loader } from 'lucide-react';
 const BASE_PATH = '/GreenYasin';
 
 const SignUp = () => {
@@ -23,10 +25,11 @@ const SignUp = () => {
   const [_user, setUser] = useProtectRoute();
 
   const { signIn } = useAuthActions();
+  const { data: user, isLoading: userLoading } = useCurrentMember();
 
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from || '/';
+  const from = location.state?.from || '/GreenYasin/';
 
   const onSignUpSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -48,8 +51,7 @@ const SignUp = () => {
         flow: 'signUp',
       });
 
-      const userData = await useQuery(api.users.current, {});
-      setUser(userData);
+      setUser(user);
       navigate(from);
     } catch (error) {
       setError('Something Went Wrong');
@@ -57,6 +59,18 @@ const SignUp = () => {
       setPending(false);
     }
   };
+
+  if (userLoading) {
+    return (
+      <div className="flex h-full flex-col items-center justify-center">
+        <Loader className="text-muted-foreground size-5 animate-spin" />
+      </div>
+    );
+  }
+
+  if (user) {
+    navigate(from);
+  }
 
   return (
     <div className="font-poppins grid min-h-screen w-screen grid-cols-1 px-8 md:grid-cols-2 md:gap-20 lg:gap-28">
