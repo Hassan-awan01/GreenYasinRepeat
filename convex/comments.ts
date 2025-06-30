@@ -1,6 +1,6 @@
 import { mutation, query } from './_generated/server';
 import { v } from 'convex/values';
-import { getAuthUserId } from '@convex-dev/auth/server'; // adjust path as needed
+import { auth } from './auth';
 
 export const create = mutation({
   args: {
@@ -9,7 +9,7 @@ export const create = mutation({
     rating: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
-    const userId = await getAuthUserId(ctx);
+    const userId = await auth.getUserId(ctx);
     if (!userId) throw new Error('Unauthorized');
     const blog = await ctx.db.get(args.blogId);
     if (blog) throw new Error('No Blog Found');
@@ -30,7 +30,7 @@ export const update = mutation({
     rating: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
-    const userId = await getAuthUserId(ctx);
+    const userId = await auth.getUserId(ctx);
     if (!userId) throw new Error('Unauthorized');
 
     const existing = await ctx.db.get(args.commentId);
@@ -52,7 +52,7 @@ export const remove = mutation({
     commentId: v.id('comments'),
   },
   handler: async (ctx, args) => {
-    const userId = await getAuthUserId(ctx);
+    const userId = await auth.getUserId(ctx);
     if (!userId) throw new Error('Unauthorized');
 
     const existing = await ctx.db.get(args.commentId);

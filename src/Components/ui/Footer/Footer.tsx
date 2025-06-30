@@ -66,8 +66,7 @@ const Footer = () => {
             <span className="text-green-400">Green </span>Yasin
           </h3>
           <p className="mb-6 leading-relaxed text-gray-300">
-            Alteration in some form by injected humour or randomised words which
-            don't look even slightly randomised words believable.
+          Green Yasin is a forward-thinking environmental solutions company committed to sustainable development and eco-friendly practices.
           </p>
           <div className="flex space-x-3">
             <a
@@ -176,8 +175,7 @@ const Footer = () => {
         <div>
           <h3 className="mb-6 text-xl font-bold uppercase">Newsletter</h3>
           <p className="mb-6 leading-relaxed text-gray-300">
-            Alteration in some form by injected humour or randomised words which
-            don't look.
+          Subscribe to our newsletter for the latest updates and green innovations from Green Yasin
           </p>
           <div className="flex">
             <input
@@ -209,7 +207,7 @@ const Footer = () => {
         <p>
           Copyright ©{new Date().getFullYear()}{' '}
           <span className="font-semibold">Green Yasin</span> Designed By{' '}
-          <span className="font-semibold">Neurix Solutions</span>
+          <span className="font-semibold"><a href="https://neurixsolution.tech/">Neurix Solutions</a></span>
         </p>
         <button
           onClick={scrollToTop}

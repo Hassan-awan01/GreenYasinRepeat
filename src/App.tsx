@@ -17,7 +17,7 @@ import ProjectDetailPage from './Components/Pages/OurWorkPage/ProjectDetailPage'
 import ProtectedRoute from './Components/Auth/ProtectedRoute';
 import OurTeamPage from './Components/Pages/OurTeamPage/OurTeamPage';
 import UpdateBlogPage from './Components/Pages/BlogPage/UpdateBlogPage';
-import BlogsPage from './Components/Pages/BlogPage/BlogsPage';
+import BlogsPage from './Components/Pages/BlogPage/BlogPage';
 
 const router = createBrowserRouter([
   {

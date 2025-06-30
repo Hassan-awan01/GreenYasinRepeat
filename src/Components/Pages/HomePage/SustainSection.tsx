@@ -5,12 +5,10 @@ import 'slick-carousel/slick/slick-theme.css';
 import SectionHeading from '../../Shared/SectionHeading';
 
 // Import images for the slider
-import img1 from '../../Images/img1.jpg';
-import img2 from '../../Images/img2.jpg';
-import img3 from '../../Images/img3.jpg';
+import img1 from '../../Images/Projects/sustain1.png';
 
 const SustainabilitySection = () => {
-  const sliderImages = [img1, img2, img3];
+  const sliderImages = [img1];
 
   const settings = {
     dots: true,
@@ -29,15 +27,15 @@ const SustainabilitySection = () => {
     <section className="bg-white py-16">
       <div className="global-container grid items-center gap-10 md:grid-cols-2">
         {/* Left Side - Image Slider */}
-        <div className="hidden md:block h-64 w-96 flex-shrink-0 md:h-80 md:w-[30rem] overflow-hidden shadow-lg rounded-lg md:ml-12">
+        <div className="hidden md:block h-80 w-full max-w-[30rem] flex-shrink-0 overflow-hidden shadow-lg rounded-lg md:ml-12">
           <Slider {...settings}>
             {sliderImages.map((image, index) => (
-              <div key={index}>
+              <div key={index} className="relative h-80 w-full">
                 <img
                   src={image}
                   alt={`Sustainability Slider ${index + 1}`}
-                  className="w-full h-full object-cover"
-          />
+                  className="h-full w-full object-contain" // Changed to object-contain for full visibility
+                />
               </div>
             ))}
           </Slider>
@@ -45,7 +43,12 @@ const SustainabilitySection = () => {
 
         {/* Right Side - Text */}
         <div>
-          <SectionHeading title="Strategic Sustainability:" highlightWord="Sustainability:" className="!text-left !mb-6" textAlignment="left" />
+          <SectionHeading
+            title="Strategic Sustainability:"
+            highlightWord="Sustainability:"
+            className="!text-left !mb-6"
+            textAlignment="left"
+          />
           <p className="mt-4 leading-relaxed text-gray-600 md:mr-10">
             We work with clients from all sectors to ensure long-term
             environmental, social, and economic sustainability through early
@@ -83,15 +86,15 @@ const sustainabilityData = [
   },
   {
     title: 'Sustainable Development',
-    points: ['Equitable Distribution']
+    points: ['Equitable Distribution'],
   },
   {
     title: 'Social',
-    points: ['Community & Governance']
+    points: ['Community & Governance'],
   },
   {
     title: 'Economy',
-    points: ['Development & Investment']
+    points: ['Development & Investment'],
   },
 ];
 

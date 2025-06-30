@@ -1,6 +1,6 @@
 import { mutation, query } from './_generated/server';
 import { v } from 'convex/values';
-import { getAuthUserId } from '@convex-dev/auth/server';
+import { auth } from './auth';
 import { paginationOptsValidator } from 'convex/server';
 import { Doc } from './_generated/dataModel';
 
@@ -12,7 +12,7 @@ export const create = mutation({
     tags: v.array(v.string()),
   },
   handler: async (ctx, args) => {
-    const userId = await getAuthUserId(ctx);
+    const userId = await auth.getUserId(ctx);
     if (!userId) throw new Error('Unauthorized');
 
     const blogId = await ctx.db.insert('blogs', {
@@ -36,7 +36,7 @@ export const update = mutation({
     tags: v.array(v.string()),
   },
   handler: async (ctx, args) => {
-    const userId = await getAuthUserId(ctx);
+    const userId = await auth.getUserId(ctx);
     if (!userId) throw new Error('Unauthorized');
 
     const blog = await ctx.db.get(args.blogId);
@@ -69,7 +69,7 @@ export const remove = mutation({
     blogId: v.id('blogs'),
   },
   handler: async (ctx, args) => {
-    const userId = await getAuthUserId(ctx);
+    const userId = await auth.getUserId(ctx);
     if (!userId) throw new Error('Unauthorized');
     const blog = await ctx.db.get(args.blogId);
     if (!blog) throw new Error('Blog not Found');
@@ -116,7 +116,7 @@ export const getById = query({
     blogId: v.id('blogs'),
   },
   handler: async (ctx, args) => {
-    const userId = await getAuthUserId(ctx);
+    const userId = await auth.getUserId(ctx);
     if (!userId) throw new Error('Unauthorized');
     const blog = await ctx.db.get(args.blogId);
     if (!blog) throw new Error('Blog not Found');
@@ -129,7 +129,7 @@ export const getByIdAndComments = query({
     blogId: v.id('blogs'),
   },
   handler: async (ctx, args) => {
-    const userId = await getAuthUserId(ctx);
+    const userId = await auth.getUserId(ctx);
     if (!userId) throw new Error('Unauthorized');
 
     const blog = await ctx.db.get(args.blogId);

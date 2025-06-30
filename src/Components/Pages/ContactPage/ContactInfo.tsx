@@ -5,16 +5,16 @@ import SectionHeading from '../../Shared/SectionHeading';
 function ContactInfo() {
   const Contact = {
     phones: [
-      { number: '+92 326 4140389', href: 'tel:+923264140389' },
-      { number: '+92 326 6319502', href: 'tel:+923266319502' },
+      { number: '04235167290', href: 'tel:04235167290' },
+      { number: '0303-5388246', href: 'tel:+923035388246' },
     ],
     address: {
-      line1: 'Pia Road, Lahore',
+      line1: '263-F, LDA Avenue, Lahore',
     },
     emails: [
       {
-        address: 'hamzaahmad2003@gmail.com',
-        href: 'mailto:hamzaahmad2003@gmail.com',
+        address: 'info@greenyasin.pk',
+        href: 'mailto:info@greenyasin.pk',
       },
     ],
   };
@@ -66,15 +66,14 @@ function ContactInfo() {
           <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-emerald-500">
             <FaMapMarkerAlt className="text-2xl text-white" />
           </div>
+
           <div className="ml-6">
             <h3 className="font-semibold text-gray-800">
               Head office address:
             </h3>
             <p className="text-gray-600">{Contact.address.line1}</p>
-            {Contact.address.line1 && (
-              <p className="text-gray-600">{Contact.address.line1}</p>
-            )}
           </div>
+
         </motion.div>
 
         {/* Emails */}

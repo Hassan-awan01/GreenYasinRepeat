@@ -16,55 +16,33 @@ import agricultureStep1 from '../../Images/img3.jpg'; // Example placeholder
 import agricultureStep2 from '../../Images/img8.jpg'; // Example placeholder
 import agricultureStep3 from '../../Images/img5.jpg'; // Example placeholder
 import agricultureStep4 from '../../Images/img6.jpg'; // Example placeholder
-import faqImage from '../../Images/img7.jpg'; // Example placeholder
+import faqImage from '../../Images/img4.jpg'; // Example placeholder
 
-const agricultureSteps = [
-  {
-    image: agricultureStep1,
-    title: 'Planting',
-    description: 'Agricultural production is the process that transforms a seed or other cultivated matter into a plant.'
-  },
-  {
-    image: agricultureStep2,
-    title: 'Growing',
-    description: 'Growing refers to the process of cultivation, which includes watering, weeding, and providing nutrients.'
-  },
-  {
-    image: agricultureStep3,
-    title: 'Harvesting',
-    description: 'Harvesting is the process of gathering a ripe crop from the fields.'
-  },
-  {
-    image: agricultureStep4,
-    title: 'Processing',
-    description: 'Processing involves converting raw agricultural products into marketable food or other products.'
-  },
-];
 
 const faqs = [
   {
-    question: 'What is the importance of eco-aviation?',
-    answer: 'Eco-aviation focuses on reducing the environmental impact of air travel through sustainable practices.'
+    question: "What is the mission of Green Yasin?",
+    answer: "Green Yasin is committed to sustainable development through innovative water management, renewable energy, and community-focused solutions."
   },
   {
-    question: 'What are the advantages of green roofs?',
-    answer: 'Green roofs provide insulation, reduce stormwater runoff, and improve air quality in urban areas.'
+    question: "How does Green Yasin promote eco-friendly water practices?",
+    answer: "By implementing advanced wastewater treatment, water recycling, and sustainable water resource management."
   },
   {
-    question: 'How to improve the sustainability of plastic use?',
-    answer: 'Reducing, reusing, and recycling plastic are key steps to improving sustainability.'
+    question: "What are the benefits of renewable energy promoted by Green Yasin?",
+    answer: "Renewable energy reduces carbon emissions, lowers energy costs, and supports a cleaner environment."
   },
   {
-    question: 'What are the advantages of solar energy?',
-    answer: 'Solar energy is a clean, renewable resource that reduces reliance on fossil fuels.'
+    question: "How does Green Yasin engage local communities?",
+    answer: "Through education, collaboration, and sustainable projects that empower communities to adopt greener lifestyles."
   },
   {
-    question: 'What are the benefits of organic farming?',
-    answer: 'Organic farming promotes biodiversity, healthy soil, and avoids synthetic pesticides and fertilizers.'
+    question: "Why is wastewater treatment important?",
+    answer: "It protects water resources, prevents pollution, and supports a healthier ecosystem and community."
   },
   {
-    question: 'What is the importance of eco-tourism?',
-    answer: 'Eco-tourism supports conservation efforts and empowers local communities while promoting sustainable travel.'
+    question: "How can I stay informed about Green Yasin's projects?",
+    answer: "Subscribe to our newsletter for the latest updates and green innovations."
   },
 ];
 
@@ -154,61 +132,7 @@ const AboutUsPage = () => {
         </div>
       </section>
 
-      {/* Steps In The Agriculture Process Section */}
-      <section className="container mx-auto px-4 py-16 bg-white shadow-sm rounded-lg mt-8">
-        <h2 className="text-sm font-semibold text-green-600 uppercase mb-2 text-center">
-          Our Process
-        </h2>
-        <SectionHeading title="Steps In The Agriculture Process" highlightWord="Process" className="!mb-12"/>
-        {/* Desktop Grid */}
-        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {agricultureSteps.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gray-100 p-6 rounded-lg text-center"
-            >
-              <img
-                src={step.image}
-                alt={step.title}
-                className="w-full h-48 object-cover rounded-lg mb-4"
-              />
-              <h4 className="text-xl font-bold text-gray-800 mb-2">
-                {step.title}
-              </h4>
-              <p className="text-gray-600">{step.description}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Mobile Slider */}
-        <div className="md:hidden">
-          {/* @ts-ignore */}
-          <Slider {...sliderSettings}>
-            {agricultureSteps.map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-gray-100 p-6 rounded-lg text-center mx-2"
-              >
-                <img
-                  src={step.image}
-                  alt={step.title}
-                  className="w-full h-48 object-cover rounded-lg mb-4"
-                />
-                <h4 className="text-xl font-bold text-gray-800 mb-2">
-                  {step.title}
-                </h4>
-                <p className="text-gray-600">{step.description}</p>
-              </motion.div>
-            ))}
-          </Slider>
-        </div>
-      </section>
+      
 
       {/* Do You Have Any Question Please? Section */}
       <section className="container mx-auto px-4 py-16 mt-8">

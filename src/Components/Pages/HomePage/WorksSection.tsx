@@ -2,32 +2,37 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaLeaf, FaWater, FaRecycle, FaIndustry } from 'react-icons/fa';
 import SectionHeading from '../../Shared/SectionHeading';
+import img1 from '../../Images/Projects/water.jpg';
+import img2 from '../../Images/Projects/Waste Water.jpg';
+import img3 from '../../Images/Projects/water sampling.jpg';
 
 const BASE_PATH = '/GreenYasin';
 
 const projects = [
   {
     id: 1,
-    title: 'Urban Green Space Development',
-    category: 'Environment',
-    description: 'Transforming urban areas into sustainable green spaces.',
-    image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1213&q=80',
+    title: 'Waste water treatment plant ICI Pakistan Pvt ltd',
+    category: 'Water Management',
+    description: 'Successfully installed a state-of-the-art wastewater treatment and management plant.',
+    image: img1,
     categoryIcon: FaLeaf,
   },
   {
     id: 2,
-    title: 'Smart Irrigation System',
+    title: 'Waste water Treatment',
     category: 'Water Management',
-    description: 'Implementing AI-powered irrigation for optimal water usage.',
-    image: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    description:'Successfully commissioned a cutting-edge wastewater treatment and management plant designed to protect the environment and support sustainable water use.',
+    image: img2,
     categoryIcon: FaWater,
   },
   {
     id: 3,
-    title: 'Waste to Energy Plant',
-    category: 'Waste Management',
-    description: 'Converting agricultural waste into renewable energy.',
-    image: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    title: 'Waste water Sampling',
+    category: 'Water Management',
+    description: `
+    Conducted systematic wastewater sampling to monitor water quality and ensure compliance with environmental standards.
+  `,
+  image: img3,
     categoryIcon: FaRecycle,
   },
 ];

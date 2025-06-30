@@ -215,11 +215,11 @@ const SubServiceDetailPage: React.FC = () => {
           <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-6 sm:space-y-0">
             <div className="flex items-center">
               <FaPhoneAlt className="mr-3 text-2xl text-emerald-200" />
-              <span className="text-xl">+42 019 001 221</span>
+              <span className="text-xl">04235167290</span>
             </div>
             <div className="flex items-center">
               <FaEnvelope className="mr-3 text-2xl text-emerald-200" />
-              <span className="text-xl">info@greenyasin.com</span>
+              <span className="text-xl">info@greenyasin.pk</span>
             </div>
           </div>
           <Link

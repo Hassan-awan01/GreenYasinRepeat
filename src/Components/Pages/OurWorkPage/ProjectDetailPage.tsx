@@ -18,7 +18,9 @@ export interface Project {
   category: string;
   image: string;
   description: string;
+  highlight: string[]; // highlight is now an array of strings
 }
+
 const BASE_PATH = '/GreenYasin';
 
 const ProjectDetailPage = () => {
@@ -34,10 +36,14 @@ const ProjectDetailPage = () => {
       setLoading(false);
       return;
     }
-
+  
     const foundProject = projects.find((p) => p.id === parseInt(projectId));
     if (foundProject) {
-      setProject(foundProject);
+      // Ensure highlight is always a string array
+      setProject({
+        ...foundProject,
+        highlight: foundProject.highlight || [], // Fallback to empty array if highlight is undefined
+      });
     } else {
       setError(true);
     }
@@ -104,12 +110,16 @@ const ProjectDetailPage = () => {
               textAlignment="left"
               className="!mb-4 !text-left"
             />
-            <ul className="list-inside list-disc space-y-2 text-gray-700">
-              <li>Detailed analysis of environmental impact.</li>
-              <li>Implementation of sustainable practices.</li>
-              <li>Community engagement and feedback incorporation.</li>
-              <li>Measurable positive outcomes for the environment.</li>
-            </ul>
+
+            {project.highlight && project.highlight.length > 0 && (
+              <ul className="list-inside list-disc space-y-2 text-gray-700">
+                {project.highlight.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            )}
+
+
           </div>
         </motion.div>
         <div className="mt-8 text-center">
