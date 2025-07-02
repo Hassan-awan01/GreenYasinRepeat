@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { blogArticles } from '../../../data/blogData';
+import { useGetMessages } from '@/features/blogs/apis/use-get-blogs';
 import SectionHeading from '../../Shared/SectionHeading';
 
 const BASE_PATH = '/GreenYasin';
@@ -9,10 +9,11 @@ const BASE_PATH = '/GreenYasin';
 const BlogPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
-  const filteredArticles = blogArticles.filter(
+  const { results, status, loadMore } = useGetMessages();
+  const filteredArticles = results.filter(
     (article) =>
       article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      article.excerpt.toLowerCase().includes(searchQuery.toLowerCase()),
+      (article.content && article.content.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
   return (
@@ -27,7 +28,7 @@ const BlogPage = () => {
         >
           <SectionHeading title="Our Blog" highlightWord="Blog" />
           <p className="mx-auto max-w-2xl text-lg text-gray-600">
-            Stay updated with our latest insights, news, and expert articles on
+           Musadaq hanif Stay updated with our latest insights, news, and expert articles on
             environmental solutions and sustainable practices.
           </p>
           <input
@@ -52,43 +53,51 @@ const BlogPage = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
         >
-          {filteredArticles.length > 0 ? (
+          {status === 'LoadingFirstPage' ? (
+            <div className="flex h-32 items-center justify-center">
+              <span className="text-emerald-600">Loading...</span>
+            </div>
+          ) : filteredArticles.length > 0 ? (
             filteredArticles.map((article, index) => (
               <motion.div
-                key={article.id}
+                key={article._id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="overflow-hidden rounded-xl bg-white shadow-lg transition-shadow duration-300 hover:shadow-xl"
               >
-                <Link to={`${BASE_PATH}/blog/${article.id}`}>
+                <Link to={`${BASE_PATH}/blog/${article._id}`}>
                   <div className="relative h-52 overflow-hidden">
-                    <img
-                      src={article.image}
-                      alt={article.title}
-                      className="h-full w-full transform object-cover transition-transform duration-500 hover:scale-110"
-                    />
+                    {article.imageUrl && (
+                      <img
+                        src={article.imageUrl}
+                        alt={article.title}
+                        className="h-full w-full transform object-cover transition-transform duration-500 hover:scale-110"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 hover:opacity-100" />
                   </div>
                 </Link>
                 <div className="p-6">
-                  <Link to={`${BASE_PATH}/blog/${article.id}`}>
+                  <Link to={`${BASE_PATH}/blog/${article._id}`}>
                     <h3 className="mb-2 text-xl font-semibold text-gray-800 transition-colors duration-300 hover:text-emerald-600">
                       {article.title}
                     </h3>
                   </Link>
+                  <div className="mb-1 text-xs text-gray-500 text-left">
+                    {article._creationTime ? new Date(article._creationTime).toLocaleString() : ''}
+                  </div>
                   <p className="mb-3 text-sm text-gray-600">
                     By{' '}
                     <span className="font-medium text-gray-700">
                       {article.author}
-                    </span>{' '}
-                    on {article.date}
+                    </span>
                   </p>
                   <p className="mb-4 text-base text-gray-700">
-                    {article.excerpt}
+                    {article.content?.slice(0, 120)}{article.content && article.content.length > 120 ? '...' : ''}
                   </p>
                   <Link
-                    to={`${BASE_PATH}/blog/${article.id}`}
+                    to={`${BASE_PATH}/blog/${article._id}`}
                     className="inline-flex items-center font-semibold text-emerald-600 transition-colors duration-300 hover:text-emerald-700"
                   >
                     Read More

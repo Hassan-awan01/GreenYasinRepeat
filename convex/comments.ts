@@ -12,12 +12,13 @@ export const create = mutation({
     const userId = await auth.getUserId(ctx);
     if (!userId) throw new Error('Unauthorized');
     const blog = await ctx.db.get(args.blogId);
-    if (blog) throw new Error('No Blog Found');
+    if (!blog) return 'Blog not found. Please refresh the page.';
     const commentId = await ctx.db.insert('comments', {
       blogId: args.blogId,
       userId,
       body: args.body,
       rating: args.rating,
+      updatedAt: Date.now(),
     });
     return commentId;
   },

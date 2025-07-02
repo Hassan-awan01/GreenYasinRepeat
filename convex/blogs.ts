@@ -10,6 +10,7 @@ export const create = mutation({
     content: v.string(),
     blogImage: v.optional(v.id('_storage')),
     tags: v.array(v.string()),
+    author: v.string(),
   },
   handler: async (ctx, args) => {
     const userId = await auth.getUserId(ctx);
@@ -21,6 +22,7 @@ export const create = mutation({
       blogImage: args.blogImage,
       userId,
       tags: args.tags,
+      author: args.author,
     });
 
     return blogId;
@@ -129,11 +131,12 @@ export const getByIdAndComments = query({
     blogId: v.id('blogs'),
   },
   handler: async (ctx, args) => {
-    const userId = await auth.getUserId(ctx);
-    if (!userId) throw new Error('Unauthorized');
-
     const blog = await ctx.db.get(args.blogId);
     if (!blog) throw new Error('Blog not Found');
+
+    const imageUrl = blog.blogImage
+      ? ((await ctx.storage.getUrl(blog.blogImage)) ?? undefined)
+      : undefined;
 
     const comments = await ctx.db
       .query('comments')
@@ -154,7 +157,7 @@ export const getByIdAndComments = query({
     );
 
     return {
-      blog,
+      blog: { ...blog, imageUrl },
       comments: enrichedComments,
     };
   },

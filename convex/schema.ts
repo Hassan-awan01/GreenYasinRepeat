@@ -18,6 +18,7 @@ const schema = defineSchema({
     userId: v.id('users'),
     tags: v.array(v.string()),
     updatedAt: v.optional(v.number()),
+    author: v.optional(v.string()),
   }).index('by_userId', ['userId']),
 
   comments: defineTable({
