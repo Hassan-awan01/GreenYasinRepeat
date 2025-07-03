@@ -2,7 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@convex-dev/auth/providers/Password": ["node_modules/@convex-dev/auth/dist/providers/Password"]
     },
     "jsx": "react-jsx",
     "target": "ES2020",

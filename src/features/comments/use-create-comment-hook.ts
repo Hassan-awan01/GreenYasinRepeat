@@ -8,7 +8,7 @@ type RequestType = {
   body: string;
   rating?: number;
 };
-type ResponseType = Id<'comments'> | null;
+type ResponseType = Id<'comments'> | string | null;
 
 type Options = {
   onSuccess?: (response: ResponseType) => void;

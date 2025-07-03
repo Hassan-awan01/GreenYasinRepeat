@@ -8,6 +8,7 @@ type RequestType = {
   content: string;
   blogImage?: Id<'_storage'>;
   tags: string[];
+  author: string;
 };
 type ResponseType = Id<'blogs'> | null;
 
@@ -32,6 +33,7 @@ export const useCreateBlog = () => {
   const mutation = useMutation(api.blogs.create);
   const mutate = useCallback(
     async (values: RequestType, options?: Options) => {
+      // Ensure 'author' is provided in values when calling mutate
       try {
         setStatus('pending');
         const response = await mutation(values);

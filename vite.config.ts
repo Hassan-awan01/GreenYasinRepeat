@@ -6,8 +6,9 @@ import pngquant from 'imagemin-pngquant';
 import path from 'path'; // ✅ Add this
 
 // https://vite.dev/config/
+
 export default defineConfig({
-  base: '/GreenYasin/',
+  base: './',
   css: {
     postcss: './postcss.config.js',
   },
@@ -29,7 +30,7 @@ export default defineConfig({
   assetsInclude: ['**/*.jpg', '**/*.png', '**/*.svg'],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'), // ✅ Add this alias
+      '@': path.resolve(__dirname, 'src'),
     },
   },
   build: {

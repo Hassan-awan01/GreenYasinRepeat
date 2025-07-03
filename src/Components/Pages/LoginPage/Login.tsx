@@ -61,7 +61,10 @@ const Login = () => {
   return (
     <div className="font-poppins grid h-screen w-screen grid-cols-1 overflow-hidden px-8 md:grid-cols-2 md:gap-20 lg:gap-28">
       <div className="flex items-center justify-end md:flex">
-        <img src={bg} alt="Background" className="w-[500px] lg:w-[400px]" />
+        <picture>
+          <source srcSet={bg.replace(/\.(jpg|jpeg|png)$/, '.webp')} type="image/webp" />
+          <img src={bg} alt="Background" className="w-[500px] lg:w-[400px]" loading="lazy" />
+        </picture>
       </div>
 
       <div className="flex w-full flex-col items-center justify-center text-center md:w-auto">
@@ -70,7 +73,10 @@ const Login = () => {
           className="mx-auto w-full max-w-[360px] md:max-w-[290px]"
         >
           <Link to={`${BASE_PATH}/`} className="mb-6 flex justify-center">
-            <img src={logo} alt="Green Yasin Logo" className="h-16 w-auto" />
+            <picture>
+              <source srcSet={logo.replace(/\.(jpg|jpeg|png)$/, '.webp')} type="image/webp" />
+              <img src={logo} alt="Green Yasin Logo" className="h-16 w-auto" loading="lazy" />
+            </picture>
           </Link>
           <SectionHeading
             title="Welcome"

@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, Navigate } from 'react-router-dom';
 
 import AppLayout from './Components/ui/AppLayout';
 import HomePage from './Components/Pages/HomePage/HomePage';
@@ -18,11 +18,16 @@ import ProtectedRoute from './Components/Auth/ProtectedRoute';
 import OurTeamPage from './Components/Pages/OurTeamPage/OurTeamPage';
 import UpdateBlogPage from './Components/Pages/BlogPage/UpdateBlogPage';
 import BlogsPage from './Components/Pages/BlogPage/BlogPage';
+import NotFoundPage from './Components/Pages/NotFoundPage';
 
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
     children: [
+      {
+        path: '/',
+        element: <Navigate to="/GreenYasin/" replace />,
+      },
       {
         path: '/GreenYasin/',
         element: <HomePage />,
@@ -83,6 +88,10 @@ const router = createBrowserRouter([
       {
         path: '/GreenYasin/profile',
         element: <ProfilePage />,
+      },
+      {
+        path: '*',
+        element: <NotFoundPage />,
       },
     ],
   },
