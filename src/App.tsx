@@ -1,4 +1,8 @@
-import { RouterProvider, createBrowserRouter, Navigate } from 'react-router-dom';
+import {
+  RouterProvider,
+  createBrowserRouter,
+  Navigate,
+} from 'react-router-dom';
 
 import AppLayout from './Components/ui/AppLayout';
 import HomePage from './Components/Pages/HomePage/HomePage';
@@ -19,6 +23,7 @@ import OurTeamPage from './Components/Pages/OurTeamPage/OurTeamPage';
 import UpdateBlogPage from './Components/Pages/BlogPage/UpdateBlogPage';
 import BlogsPage from './Components/Pages/BlogPage/BlogPage';
 import NotFoundPage from './Components/Pages/NotFoundPage';
+import CareerPage from './Components/Pages/CareerPage/Careerpage';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: '/GreenYasin/contact',
         element: <ContactPage />,
+      },
+      {
+        path: '/GreenYasin/career',
+        element: <CareerPage />,
       },
       {
         path: '/GreenYasin/our-work',

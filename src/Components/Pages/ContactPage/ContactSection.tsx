@@ -3,12 +3,13 @@ import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
 import ContactSchema from './ContactSchema';
 import ContactInfo from './ContactInfo';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from '../../../utils/emailjs-config';
 
 interface ContactFormValues {
-  name: string;
-  subject: string;
+  fullName: string;
   email: string;
-  query: string;
+  message: string;
 }
 
 interface SubmissionStatus {
@@ -26,26 +27,41 @@ function ContactSection() {
   ) => {
     setSubmitting(true);
     setStatus(null);
+
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values),
-      });
+      // Prepare template parameters
+      const templateParams = {
+        from_name: values.fullName,
+        from_email: values.email,
+        message: values.message,
+        to_name: 'Green Yasin Team',
+      };
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams,
+        EMAILJS_CONFIG.PUBLIC_KEY,
+      );
+
+      if (result.status === 200) {
+        setStatus({
+          success: true,
+          message: 'Message sent successfully! We will get back to you soon.',
+        });
+        resetForm();
+      } else {
+        throw new Error('Failed to send email');
       }
-
-      await response.json();
-      setStatus({ success: true, message: 'Form submitted successfully!' });
     } catch (error) {
+      console.error('EmailJS Error:', error);
       setStatus({
         success: false,
-        message: 'Error submitting form. Try again.',
+        message:
+          'Error sending message. Please try again or contact us directly.',
       });
     } finally {
-      resetForm();
       setSubmitting(false);
     }
   };
@@ -63,10 +79,9 @@ function ContactSection() {
           >
             <Formik<ContactFormValues>
               initialValues={{
-                name: '',
-                subject: '',
+                fullName: '',
                 email: '',
-                query: '',
+                message: '',
               }}
               validationSchema={ContactSchema}
               onSubmit={handleSubmit}
@@ -85,34 +100,47 @@ function ContactSection() {
                     </div>
                   )}
 
-                  {(['name', 'email', 'subject'] as const).map((fieldName) => (
-                    <div key={fieldName}>
-                      <Field
-                        name={fieldName}
-                        type={fieldName === 'email' ? 'email' : 'text'}
-                        placeholder={
-                          fieldName.charAt(0).toUpperCase() + fieldName.slice(1)
-                        }
-                        className="w-full rounded-md border border-gray-300 p-3 transition-colors duration-200 focus:border-emerald-500 focus:outline-none"
-                      />
-                      <ErrorMessage
-                        name={fieldName}
-                        component="div"
-                        className="mt-1 text-sm text-red-500"
-                      />
-                    </div>
-                  ))}
-
+                  {/* Full Name Field */}
                   <div>
                     <Field
-                      as="textarea"
-                      name="query"
-                      placeholder="Project details or Query"
-                      rows={4}
+                      name="fullName"
+                      type="text"
+                      placeholder="Your Full Name"
                       className="w-full rounded-md border border-gray-300 p-3 transition-colors duration-200 focus:border-emerald-500 focus:outline-none"
                     />
                     <ErrorMessage
-                      name="query"
+                      name="fullName"
+                      component="div"
+                      className="mt-1 text-sm text-red-500"
+                    />
+                  </div>
+
+                  {/* Email Field */}
+                  <div>
+                    <Field
+                      name="email"
+                      type="email"
+                      placeholder="Your Email Address"
+                      className="w-full rounded-md border border-gray-300 p-3 transition-colors duration-200 focus:border-emerald-500 focus:outline-none"
+                    />
+                    <ErrorMessage
+                      name="email"
+                      component="div"
+                      className="mt-1 text-sm text-red-500"
+                    />
+                  </div>
+
+                  {/* Message Field */}
+                  <div>
+                    <Field
+                      as="textarea"
+                      name="message"
+                      placeholder="Your message..."
+                      rows={6}
+                      className="w-full rounded-md border border-gray-300 p-3 transition-colors duration-200 focus:border-emerald-500 focus:outline-none"
+                    />
+                    <ErrorMessage
+                      name="message"
                       component="div"
                       className="mt-1 text-sm text-red-500"
                     />
@@ -123,7 +151,7 @@ function ContactSection() {
                     disabled={submitting}
                     className="w-full rounded-md bg-emerald-500 py-3 font-semibold text-white transition-colors duration-300 hover:bg-emerald-600 disabled:cursor-not-allowed disabled:opacity-50"
                   >
-                    {submitting ? 'Sending...' : 'Send'}
+                    {submitting ? 'Sending...' : 'Send Message'}
                   </button>
                 </Form>
               )}
