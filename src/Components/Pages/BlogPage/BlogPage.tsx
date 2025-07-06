@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useGetMessages } from '@/features/blogs/apis/use-get-blogs';
@@ -13,7 +13,8 @@ const BlogPage = () => {
   const filteredArticles = results.filter(
     (article) =>
       article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (article.content && article.content.toLowerCase().includes(searchQuery.toLowerCase()))
+      (article.content &&
+        article.content.toLowerCase().includes(searchQuery.toLowerCase())),
   );
 
   return (
@@ -28,8 +29,9 @@ const BlogPage = () => {
         >
           <SectionHeading title="Our Blog" highlightWord="Blog" />
           <p className="mx-auto max-w-2xl text-lg text-gray-600">
-           Musadaq hanif Stay updated with our latest insights, news, and expert articles on
-            environmental solutions and sustainable practices.
+            Musadaq hanif Stay updated with our latest insights, news, and
+            expert articles on environmental solutions and sustainable
+            practices.
           </p>
           <input
             type="text"
@@ -84,8 +86,10 @@ const BlogPage = () => {
                       {article.title}
                     </h3>
                   </Link>
-                  <div className="mb-1 text-xs text-gray-500 text-left">
-                    {article._creationTime ? new Date(article._creationTime).toLocaleString() : ''}
+                  <div className="mb-1 text-left text-xs text-gray-500">
+                    {article._creationTime
+                      ? new Date(article._creationTime).toLocaleString()
+                      : ''}
                   </div>
                   <p className="mb-3 text-sm text-gray-600">
                     By{' '}
@@ -94,7 +98,10 @@ const BlogPage = () => {
                     </span>
                   </p>
                   <p className="mb-4 text-base text-gray-700">
-                    {article.content?.slice(0, 120)}{article.content && article.content.length > 120 ? '...' : ''}
+                    {article.content?.slice(0, 120)}
+                    {article.content && article.content.length > 120
+                      ? '...'
+                      : ''}
                   </p>
                   <Link
                     to={`${BASE_PATH}/blog/${article._id}`}

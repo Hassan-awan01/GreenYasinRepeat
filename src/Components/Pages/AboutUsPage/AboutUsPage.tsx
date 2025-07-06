@@ -1,23 +1,23 @@
-import React from 'react';
+// import React from 'react';
 import { motion } from 'framer-motion';
 import { FaCheckCircle, FaQuestionCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import SectionHeading from '../../Shared/SectionHeading';
 import OptimizedImage from '../../Shared/OptimizedImage';
-import Slider from 'react-slick';
+// import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const BASE_PATH = '/GreenYasin';
 
 // Placeholder images - you'll replace these with your actual image paths
-import aboutUsHeroImage from '../../Images/img1.jpg'; // Example placeholder
-import greenerFutureImage from '../../Images/img2.jpg'; // Example placeholder
-import agricultureStep1 from '../../Images/img3.jpg'; // Example placeholder
-import agricultureStep2 from '../../Images/img8.jpg'; // Example placeholder
-import agricultureStep3 from '../../Images/img5.jpg'; // Example placeholder
-import agricultureStep4 from '../../Images/img6.jpg'; // Example placeholder
-import faqImage from '../../Images/img4.jpg'; // Example placeholder
+// import aboutUsHeroImage from '../../Images/img1.jpg'; // Example placeholder
+import greenerFutureImage from '../../Images/img2.webp'; // Example placeholder
+// import agricultureStep1 from '../../Images/img3.jpg'; // Example placeholder
+// import agricultureStep2 from '../../Images/img8.jpg'; // Example placeholder
+// import agricultureStep3 from '../../Images/img5.jpg'; // Example placeholder
+// import agricultureStep4 from '../../Images/img6.jpg'; // Example placeholder
+import faqImage from '../../Images/img4.webp'; // Example placeholder
 
 const faqs = [
   {
@@ -155,11 +155,10 @@ const AboutUsPage = () => {
             transition={{ duration: 0.8 }}
             className="hidden justify-center md:flex md:w-1/2"
           >
-            <OptimizedImage
+            <img
               src={faqImage}
               alt="Have a Question?"
               className="w-full max-w-md rounded-lg object-cover shadow-lg"
-              loading="lazy"
             />
           </motion.div>
           <motion.div

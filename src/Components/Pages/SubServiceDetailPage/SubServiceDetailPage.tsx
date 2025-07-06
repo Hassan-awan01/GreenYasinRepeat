@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 import SectionHeading from '../../Shared/SectionHeading';
 import projectsData from '../../Shared/projectsData';
-import type { ProjectCategory, SubService } from '../../../types'; // if separated
+import type { ProjectCategory, SubService } from '../../../types';
 
 interface RouteParams {
   categoryName?: string;

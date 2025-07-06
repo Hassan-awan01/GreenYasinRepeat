@@ -6,15 +6,15 @@ import 'slick-carousel/slick/slick-theme.css';
 import { FaLeaf, FaRecycle, FaTree } from 'react-icons/fa';
 
 // Import images from the Components/Images folder
-import img1 from '../../Images/img1.jpg';
-import img2 from '../../Images/img2.jpg';
-import img3 from '../../Images/img3.jpg';
-import img4 from '../../Images/img9.jpg';
-import img5 from '../../Images/img5.jpg';
-import img6 from '../../Images/img6.jpg';
-import img7 from '../../Images/img7.jpg';
-import img8 from '../../Images/img8.jpg';
-import img9 from '../../Images/img9.jpg';
+import img1 from '../../Images/img1.webp';
+import img2 from '../../Images/img2.webp';
+import img3 from '../../Images/img3.webp';
+import img4 from '../../Images/img9.webp';
+import img5 from '../../Images/img5.webp';
+import img6 from '../../Images/img6.webp';
+import img7 from '../../Images/img7.webp';
+import img8 from '../../Images/img8.webp';
+import img9 from '../../Images/img9.webp';
 
 const BASE_PATH = '/GreenYasin';
 

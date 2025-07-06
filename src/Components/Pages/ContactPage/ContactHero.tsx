@@ -1,9 +1,10 @@
-import React from 'react';
+// import React from 'react';
 // import './ContactHero.css'; // Removed import
 import contactHeroImg from '../../Images/aboutusimg.png'; // Using an existing image as a placeholder for now
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import SectionHeading from '../../Shared/SectionHeading';
+// import OptimizedImage from '@/Components/Shared/OptimizedImage';
 
 function HeroSection() {
   return (

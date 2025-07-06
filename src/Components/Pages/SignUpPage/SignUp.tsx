@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import bg from '../../Images/bg.svg';
-import logo from '../../Images/logo.png';
+import bg from '../../Images/bg.webp';
+import logo from '../../Images/logo.webp';
 import SectionHeading from '../../Shared/SectionHeading';
 import { useAuthActions } from '@convex-dev/auth/react';
 import { useProtectRoute } from '@/features/hooks/use-protect-route';
-import { api } from '@/../convex/_generated/api';
-import { useQuery } from 'convex/react';
+// import { api } from '@/../convex/_generated/api';
+// import { useQuery } from 'convex/react';
 import { useCurrentMember } from '@/features/hooks/use-get-current-member';
 import { Loader, Eye, EyeOff } from 'lucide-react';
 const BASE_PATH = '/GreenYasin';
@@ -79,8 +79,16 @@ const SignUp = () => {
     <div className="font-poppins grid min-h-screen w-screen grid-cols-1 px-8 md:grid-cols-2 md:gap-20 lg:gap-28">
       <div className="flex items-center justify-end md:flex">
         <picture>
-          <source srcSet={bg.replace(/\.(jpg|jpeg|png)$/, '.webp')} type="image/webp" />
-          <img src={bg} alt="Background" className="w-[500px] lg:w-[400px]" loading="lazy" />
+          <source
+            srcSet={bg.replace(/\.(jpg|jpeg|png)$/, '.webp')}
+            type="image/webp"
+          />
+          <img
+            src={bg}
+            alt="Background"
+            className="w-[500px] lg:w-[400px]"
+            loading="lazy"
+          />
         </picture>
       </div>
 
@@ -91,8 +99,16 @@ const SignUp = () => {
         >
           <Link to={`${BASE_PATH}/`} className="mb-6 flex justify-center">
             <picture>
-              <source srcSet={logo.replace(/\.(jpg|jpeg|png)$/, '.webp')} type="image/webp" />
-              <img src={logo} alt="Green Yasin Logo" className="h-16 w-auto" loading="lazy" />
+              <source
+                srcSet={logo.replace(/\.(jpg|jpeg|png)$/, '.webp')}
+                type="image/webp"
+              />
+              <img
+                src={logo}
+                alt="Green Yasin Logo"
+                className="h-16 w-auto"
+                loading="lazy"
+              />
             </picture>
           </Link>
           <SectionHeading
@@ -102,7 +118,10 @@ const SignUp = () => {
           />
           {/* Full Name Input */}
           <div className="mb-4 text-left">
-            <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="fullName"
+              className="mb-1 block text-sm font-medium text-gray-700"
+            >
               Full Name
             </label>
             <input
@@ -120,7 +139,10 @@ const SignUp = () => {
           </div>
           {/* Email Input */}
           <div className="mb-4 text-left">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="email"
+              className="mb-1 block text-sm font-medium text-gray-700"
+            >
               Email
             </label>
             <input
@@ -137,9 +159,12 @@ const SignUp = () => {
             />
           </div>
           {/* Passwords Group */}
-          <div className="mb-4 text-left flex gap-2">
+          <div className="mb-4 flex gap-2 text-left">
             <div className="w-1/2">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="password"
+                className="mb-1 block text-sm font-medium text-gray-700"
+              >
                 Password
               </label>
               <div className="relative">
@@ -147,7 +172,7 @@ const SignUp = () => {
                   type={showPassword ? 'text' : 'password'}
                   id="password"
                   name="password"
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 text-base text-gray-700 focus:border-emerald-500 focus:ring-emerald-500 pr-10"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 pr-10 text-base text-gray-700 focus:border-emerald-500 focus:ring-emerald-500"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   disabled={pending}
@@ -166,7 +191,10 @@ const SignUp = () => {
               </div>
             </div>
             <div className="w-1/2">
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="confirmPassword"
+                className="mb-1 block text-sm font-medium text-gray-700"
+              >
                 Confirm Password
               </label>
               <div className="relative">
@@ -174,7 +202,7 @@ const SignUp = () => {
                   type={showConfirmPassword ? 'text' : 'password'}
                   id="confirmPassword"
                   name="confirmPassword"
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 text-base text-gray-700 focus:border-emerald-500 focus:ring-emerald-500 pr-10"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 pr-10 text-base text-gray-700 focus:border-emerald-500 focus:ring-emerald-500"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   disabled={pending}
@@ -188,14 +216,21 @@ const SignUp = () => {
                   tabIndex={-1}
                   onClick={() => setShowConfirmPassword((v) => !v)}
                 >
-                  {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                  {showConfirmPassword ? (
+                    <EyeOff size={18} />
+                  ) : (
+                    <Eye size={18} />
+                  )}
                 </button>
               </div>
             </div>
           </div>
           {/* Profession Input */}
           <div className="mb-4 text-left">
-            <label htmlFor="profession" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="profession"
+              className="mb-1 block text-sm font-medium text-gray-700"
+            >
               Profession
             </label>
             <input
@@ -212,7 +247,10 @@ const SignUp = () => {
           </div>
           {/* Introduction Textarea */}
           <div className="mb-4 text-left">
-            <label htmlFor="introduction" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="introduction"
+              className="mb-1 block text-sm font-medium text-gray-700"
+            >
               Introduction
             </label>
             <textarea
@@ -227,11 +265,13 @@ const SignUp = () => {
               rows={3}
               maxLength={200}
             />
-            <div className="text-xs text-gray-400 text-right mt-1">
+            <div className="mt-1 text-right text-xs text-gray-400">
               {introduction.length}/200 characters
             </div>
           </div>
-          {error && <p className="mt-4 text-sm text-red-500 text-left">{error}</p>}
+          {error && (
+            <p className="mt-4 text-left text-sm text-red-500">{error}</p>
+          )}
           <button
             type="submit"
             className="mt-6 w-full rounded-full bg-emerald-600 py-2 text-xl text-white transition-all duration-300 hover:bg-emerald-700"

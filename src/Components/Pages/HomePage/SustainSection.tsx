@@ -5,7 +5,8 @@ import 'slick-carousel/slick/slick-theme.css';
 import SectionHeading from '../../Shared/SectionHeading';
 
 // Import images for the slider
-import img1 from '../../Images/Projects/sustain1.png';
+import img1 from '../../Images/Projects/sustain1.webp';
+// import OptimizedImage from '@/Components/Shared/OptimizedImage';
 
 const SustainabilitySection = () => {
   const sliderImages = [img1];
@@ -27,7 +28,7 @@ const SustainabilitySection = () => {
     <section className="bg-white py-16">
       <div className="global-container grid items-center gap-10 md:grid-cols-2">
         {/* Left Side - Image Slider */}
-        <div className="hidden md:block h-80 w-full max-w-[30rem] flex-shrink-0 overflow-hidden shadow-lg rounded-lg md:ml-12">
+        <div className="hidden h-80 w-full max-w-[30rem] flex-shrink-0 overflow-hidden rounded-lg shadow-lg md:ml-12 md:block">
           <Slider {...settings}>
             {sliderImages.map((image, index) => (
               <div key={index} className="relative h-80 w-full">
@@ -46,7 +47,7 @@ const SustainabilitySection = () => {
           <SectionHeading
             title="Strategic Sustainability:"
             highlightWord="Sustainability:"
-            className="!text-left !mb-6"
+            className="!mb-6 !text-left"
             textAlignment="left"
           />
           <p className="mt-4 leading-relaxed text-gray-600 md:mr-10">

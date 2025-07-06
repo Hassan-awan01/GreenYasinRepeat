@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useGetBlogAndComment } from '@/features/blogs/apis/use-get-blog-comments';
@@ -39,17 +39,24 @@ type ArticleContent =
 
 const ArticlePage = () => {
   const { articleId } = useParams<{ articleId: string }>();
-  const { data, isLoading } = useGetBlogAndComment({ blogId: articleId as any });
+  const { data, isLoading } = useGetBlogAndComment({
+    blogId: articleId as any,
+  });
   const blog = data?.blog;
   const comments = data?.comments || [];
   const error = !isLoading && !blog;
 
   // Comment form state
   const [commentBody, setCommentBody] = useState('');
-  const [commentRating, setCommentRating] = useState<number | undefined>(undefined);
-  const { mutate: createComment, isPending: isCreatingComment } = useCreateComment();
-  const { mutate: removeComment, isPending: isRemovingComment } = useRemoveComment();
-  const { mutate: updateComment, isPending: isUpdatingComment } = useUpdateComment();
+  const [commentRating, setCommentRating] = useState<number | undefined>(
+    undefined,
+  );
+  const { mutate: createComment, isPending: isCreatingComment } =
+    useCreateComment();
+  const { mutate: removeComment, isPending: isRemovingComment } =
+    useRemoveComment();
+  const { mutate: updateComment, isPending: isUpdatingComment } =
+    useUpdateComment();
   const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
   const [editBody, setEditBody] = useState('');
   const [editRating, setEditRating] = useState<number | undefined>(undefined);
@@ -70,7 +77,7 @@ const ArticlePage = () => {
           setCommentBody('');
           setCommentRating(undefined);
         },
-      }
+      },
     );
   };
 
@@ -105,33 +112,36 @@ const ArticlePage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 pb-16 pt-32">
-      <div className="mx-auto max-w-6xl px-4 flex flex-col md:flex-row gap-8">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 md:flex-row">
         {/* Blog Details Left Side */}
-        <div className="md:w-3/5 w-full flex flex-col items-center justify-start">
+        <div className="flex w-full flex-col items-center justify-start md:w-3/5">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="rounded-xl bg-white p-8 shadow-lg w-full"
+            className="w-full rounded-xl bg-white p-8 shadow-lg"
           >
             {safeBlog.imageUrl && (
               <div className="mb-6">
                 <img
                   src={safeBlog.imageUrl as string}
                   alt={safeBlog.title}
-                  className="rounded-lg object-cover shadow-md max-h-72 w-full max-w-xl"
+                  className="max-h-72 w-full max-w-xl rounded-lg object-cover shadow-md"
                   style={{ objectFit: 'cover' }}
                 />
               </div>
             )}
-            <div className="mb-2 text-xs text-gray-500 text-left">
+            <div className="mb-2 text-left text-xs text-gray-500">
               {formattedDate} at {formattedTime}
             </div>
-            <h1 className="mb-2 text-3xl font-bold leading-tight text-gray-900 text-left">
+            <h1 className="mb-2 text-left text-3xl font-bold leading-tight text-gray-900">
               {safeBlog.title}
             </h1>
-            <div className="mb-2 text-base text-gray-600 text-left">
-              By <span className="font-medium text-gray-700">{safeBlog.author}</span>
+            <div className="mb-2 text-left text-base text-gray-600">
+              By{' '}
+              <span className="font-medium text-gray-700">
+                {safeBlog.author}
+              </span>
             </div>
             <div className="prose max-w-none text-left">
               {String(safeBlog.content)}
@@ -140,27 +150,37 @@ const ArticlePage = () => {
         </div>
 
         {/* Right Side: Comments (Chat) and Tags */}
-        <div className="md:w-2/5 w-full flex flex-col gap-6">
+        <div className="flex w-full flex-col gap-6 md:w-2/5">
           {/* Chat/Comments Section */}
-          <div className="rounded-xl bg-white p-8 shadow-lg flex-1 min-h-[300px] max-h-[400px] overflow-y-auto">
+          <div className="max-h-[400px] min-h-[300px] flex-1 overflow-y-auto rounded-xl bg-white p-8 shadow-lg">
             <h2 className="mb-6 text-2xl font-semibold text-gray-800">Chat</h2>
             {comments.length === 0 ? (
-              <p className="text-gray-500">No comments yet. Be the first to comment!</p>
+              <p className="text-gray-500">
+                No comments yet. Be the first to comment!
+              </p>
             ) : (
               <ul className="space-y-6">
                 {comments.map((comment: any) => {
-                  const isAuthor = currentUser && comment.userId === currentUser._id;
+                  const isAuthor =
+                    currentUser && comment.userId === currentUser._id;
                   return (
-                    <li key={comment._id} className="border-b pb-4 last:border-b-0">
+                    <li
+                      key={comment._id}
+                      className="border-b pb-4 last:border-b-0"
+                    >
                       <div className="mb-1 flex items-center gap-2 text-sm text-gray-600">
                         <span className="font-medium text-gray-800">
                           {comment.user?.fullName || 'Anonymous'}
                         </span>
                         {comment.user?.profession && (
-                          <span className="text-xs text-gray-400">({comment.user.profession})</span>
+                          <span className="text-xs text-gray-400">
+                            ({comment.user.profession})
+                          </span>
                         )}
                         {comment.rating !== undefined && (
-                          <span className="ml-2 rounded bg-emerald-100 px-2 py-0.5 text-xs text-emerald-700">Rating: {comment.rating}</span>
+                          <span className="ml-2 rounded bg-emerald-100 px-2 py-0.5 text-xs text-emerald-700">
+                            Rating: {comment.rating}
+                          </span>
                         )}
                         {isAuthor && (
                           <>
@@ -172,7 +192,9 @@ const ArticlePage = () => {
                                 setEditRating(comment.rating);
                               }}
                               disabled={isUpdatingComment || isRemovingComment}
-                            >Edit</button>
+                            >
+                              Edit
+                            </button>
                             <button
                               className="ml-2 text-xs text-red-600 hover:underline"
                               onClick={() => {
@@ -181,30 +203,36 @@ const ArticlePage = () => {
                                 }
                               }}
                               disabled={isUpdatingComment || isRemovingComment}
-                            >Delete</button>
+                            >
+                              Delete
+                            </button>
                           </>
                         )}
                       </div>
                       {editingCommentId === comment._id ? (
                         <form
                           className="space-y-2"
-                          onSubmit={e => {
+                          onSubmit={(e) => {
                             e.preventDefault();
                             updateComment(
-                              { commentId: comment._id, body: editBody, rating: editRating },
+                              {
+                                commentId: comment._id,
+                                body: editBody,
+                                rating: editRating,
+                              },
                               {
                                 onSuccess: () => {
                                   setEditingCommentId(null);
                                   setEditBody('');
                                   setEditRating(undefined);
                                 },
-                              }
+                              },
                             );
                           }}
                         >
                           <textarea
                             value={editBody}
-                            onChange={e => setEditBody(e.target.value)}
+                            onChange={(e) => setEditBody(e.target.value)}
                             rows={2}
                             className="w-full rounded-md border border-gray-300 px-2 py-1"
                             required
@@ -214,21 +242,31 @@ const ArticlePage = () => {
                             min={1}
                             max={5}
                             value={editRating === undefined ? '' : editRating}
-                            onChange={e => setEditRating(e.target.value ? Number(e.target.value) : undefined)}
+                            onChange={(e) =>
+                              setEditRating(
+                                e.target.value
+                                  ? Number(e.target.value)
+                                  : undefined,
+                              )
+                            }
                             placeholder="Rating (1-5)"
                             className="w-32 rounded-md border border-gray-300 px-2 py-1"
                           />
-                          <div className="flex gap-2 mt-1">
+                          <div className="mt-1 flex gap-2">
                             <button
                               type="submit"
-                              className="rounded bg-emerald-600 px-3 py-1 text-white text-xs hover:bg-emerald-700"
+                              className="rounded bg-emerald-600 px-3 py-1 text-xs text-white hover:bg-emerald-700"
                               disabled={isUpdatingComment}
-                            >Save</button>
+                            >
+                              Save
+                            </button>
                             <button
                               type="button"
                               className="rounded bg-gray-300 px-3 py-1 text-xs text-gray-700 hover:bg-gray-400"
                               onClick={() => setEditingCommentId(null)}
-                            >Cancel</button>
+                            >
+                              Cancel
+                            </button>
                           </div>
                         </form>
                       ) : (
@@ -244,7 +282,7 @@ const ArticlePage = () => {
             <form onSubmit={handleCommentSubmit} className="mt-8 space-y-4">
               <textarea
                 value={commentBody}
-                onChange={e => setCommentBody(e.target.value)}
+                onChange={(e) => setCommentBody(e.target.value)}
                 rows={3}
                 placeholder="Write your comment..."
                 className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-emerald-500 focus:ring-emerald-500"
@@ -256,7 +294,11 @@ const ArticlePage = () => {
                   min={1}
                   max={5}
                   value={commentRating === undefined ? '' : commentRating}
-                  onChange={e => setCommentRating(e.target.value ? Number(e.target.value) : undefined)}
+                  onChange={(e) =>
+                    setCommentRating(
+                      e.target.value ? Number(e.target.value) : undefined,
+                    )
+                  }
                   placeholder="Rating (1-5)"
                   className="w-32 rounded-md border border-gray-300 px-2 py-1 focus:border-emerald-500 focus:ring-emerald-500"
                 />
@@ -271,14 +313,21 @@ const ArticlePage = () => {
             </form>
           </div>
           {/* Tags Section */}
-          <div className="rounded-xl bg-white p-4 shadow flex flex-wrap gap-2">
-            <h3 className="mb-2 text-lg font-semibold text-gray-700 w-full">Tags</h3>
+          <div className="flex flex-wrap gap-2 rounded-xl bg-white p-4 shadow">
+            <h3 className="mb-2 w-full text-lg font-semibold text-gray-700">
+              Tags
+            </h3>
             {safeBlog.tags && safeBlog.tags.length > 0 ? (
               safeBlog.tags.map((tag: string) => (
-                <span key={tag} className="rounded-full bg-emerald-100 px-3 py-1 text-xs text-emerald-700">#{tag}</span>
+                <span
+                  key={tag}
+                  className="rounded-full bg-emerald-100 px-3 py-1 text-xs text-emerald-700"
+                >
+                  #{tag}
+                </span>
               ))
             ) : (
-              <span className="text-gray-400 text-xs">No tags</span>
+              <span className="text-xs text-gray-400">No tags</span>
             )}
           </div>
         </div>

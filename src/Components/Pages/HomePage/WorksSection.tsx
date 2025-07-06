@@ -2,9 +2,10 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaLeaf, FaWater, FaRecycle, FaIndustry } from 'react-icons/fa';
 import SectionHeading from '../../Shared/SectionHeading';
-import img1 from '../../Images/Projects/water.jpg';
-import img2 from '../../Images/Projects/Waste Water.jpg';
-import img3 from '../../Images/Projects/water sampling.jpg';
+import img1 from '../../Images/Projects/water.webp';
+import img2 from '../../Images/Projects/Waste Water.webp';
+import img3 from '../../Images/Projects/water sampling.webp';
+// import OptimizedImage from '@/Components/Shared/OptimizedImage';
 
 const BASE_PATH = '/GreenYasin';
 
@@ -13,7 +14,8 @@ const projects = [
     id: 1,
     title: 'Waste water treatment plant ICI Pakistan Pvt ltd',
     category: 'Water Management',
-    description: 'Successfully installed a state-of-the-art wastewater treatment and management plant.',
+    description:
+      'Successfully installed a state-of-the-art wastewater treatment and management plant.',
     image: img1,
     categoryIcon: FaLeaf,
   },
@@ -21,7 +23,8 @@ const projects = [
     id: 2,
     title: 'Waste water Treatment',
     category: 'Water Management',
-    description:'Successfully commissioned a cutting-edge wastewater treatment and management plant designed to protect the environment and support sustainable water use.',
+    description:
+      'Successfully commissioned a cutting-edge wastewater treatment and management plant designed to protect the environment and support sustainable water use.',
     image: img2,
     categoryIcon: FaWater,
   },
@@ -32,7 +35,7 @@ const projects = [
     description: `
     Conducted systematic wastewater sampling to monitor water quality and ensure compliance with environmental standards.
   `,
-  image: img3,
+    image: img3,
     categoryIcon: FaRecycle,
   },
 ];
@@ -46,11 +49,11 @@ const WorkSection = () => {
       <div className="container mx-auto px-4">
         <SectionHeading title="Our Latest Work" highlightWord="Work" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {latestProjects.map((project, index) => (
-            <Link 
+            <Link
               to={`${BASE_PATH}/our-work/${project.id}`}
-              className="group relative overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl block"
+              className="group relative block overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl"
             >
               <div className="relative h-64 overflow-hidden">
                 <img
@@ -60,11 +63,13 @@ const WorkSection = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white opacity-0 transition-all duration-300 group-hover:opacity-100">
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="mb-2 flex items-center gap-2">
                     <project.categoryIcon className="text-emerald-400" />
-                    <span className="text-sm font-medium">{project.category}</span>
+                    <span className="text-sm font-medium">
+                      {project.category}
+                    </span>
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                  <h3 className="mb-2 text-xl font-bold">{project.title}</h3>
                   <p className="text-sm text-gray-200">{project.description}</p>
                 </div>
               </div>
@@ -77,7 +82,7 @@ const WorkSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center mt-12"
+          className="mt-12 text-center"
         >
           <Link
             to={`${BASE_PATH}/our-work`}
@@ -104,4 +109,4 @@ const WorkSection = () => {
   );
 };
 
-export default WorkSection; 
+export default WorkSection;

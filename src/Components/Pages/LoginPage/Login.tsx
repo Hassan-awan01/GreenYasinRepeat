@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-import bg from '../../Images/bg.svg';
-import logo from '../../Images/logo.png';
+import bg from '../../Images/bg.webp';
+import logo from '../../Images/logo.webp';
 import SectionHeading from '../../Shared/SectionHeading';
 import { useAuthActions } from '@convex-dev/auth/react';
 import { Loader } from 'lucide-react';
@@ -62,8 +62,16 @@ const Login = () => {
     <div className="font-poppins grid h-screen w-screen grid-cols-1 overflow-hidden px-8 md:grid-cols-2 md:gap-20 lg:gap-28">
       <div className="flex items-center justify-end md:flex">
         <picture>
-          <source srcSet={bg.replace(/\.(jpg|jpeg|png)$/, '.webp')} type="image/webp" />
-          <img src={bg} alt="Background" className="w-[500px] lg:w-[400px]" loading="lazy" />
+          <source
+            srcSet={bg.replace(/\.(jpg|jpeg|png)$/, '.webp')}
+            type="image/webp"
+          />
+          <img
+            src={bg}
+            alt="Background"
+            className="w-[500px] lg:w-[400px]"
+            loading="lazy"
+          />
         </picture>
       </div>
 
@@ -74,8 +82,16 @@ const Login = () => {
         >
           <Link to={`${BASE_PATH}/`} className="mb-6 flex justify-center">
             <picture>
-              <source srcSet={logo.replace(/\.(jpg|jpeg|png)$/, '.webp')} type="image/webp" />
-              <img src={logo} alt="Green Yasin Logo" className="h-16 w-auto" loading="lazy" />
+              <source
+                srcSet={logo.replace(/\.(jpg|jpeg|png)$/, '.webp')}
+                type="image/webp"
+              />
+              <img
+                src={logo}
+                alt="Green Yasin Logo"
+                className="h-16 w-auto"
+                loading="lazy"
+              />
             </picture>
           </Link>
           <SectionHeading

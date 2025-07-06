@@ -8,11 +8,11 @@ import {
   FaAngleRight,
 } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6'; // For the new 'X' icon
-import footImage from '../../Images/foot.jpg';
+import footImage from '../../Images/foot.webp';
 
 // Placeholder images for recent posts
-import recentPost1 from '../../Images/img8.jpg'; // Example placeholder
-import recentPost2 from '../../Images/img5.jpg'; // Example placeholder
+import recentPost1 from '../../Images/img8.webp'; // Example placeholder
+import recentPost2 from '../../Images/img5.webp'; // Example placeholder
 
 const BASE_PATH = '/GreenYasin';
 
@@ -66,7 +66,8 @@ const Footer = () => {
             <span className="text-green-400">Green </span>Yasin
           </h3>
           <p className="mb-6 leading-relaxed text-gray-300">
-          Green Yasin is a forward-thinking environmental solutions company committed to sustainable development and eco-friendly practices.
+            Green Yasin is a forward-thinking environmental solutions company
+            committed to sustainable development and eco-friendly practices.
           </p>
           <div className="flex space-x-3">
             <a
@@ -175,7 +176,8 @@ const Footer = () => {
         <div>
           <h3 className="mb-6 text-xl font-bold uppercase">Newsletter</h3>
           <p className="mb-6 leading-relaxed text-gray-300">
-          Subscribe to our newsletter for the latest updates and green innovations from Green Yasin
+            Subscribe to our newsletter for the latest updates and green
+            innovations from Green Yasin
           </p>
           <div className="flex">
             <input
@@ -207,7 +209,9 @@ const Footer = () => {
         <p>
           Copyright ©{new Date().getFullYear()}{' '}
           <span className="font-semibold">Green Yasin</span> Designed By{' '}
-          <span className="font-semibold"><a href="https://neurixsolution.tech/">Neurix Solutions</a></span>
+          <span className="font-semibold">
+            <a href="https://neurixsolution.tech/">Neurix Solutions</a>
+          </span>
         </p>
         <button
           onClick={scrollToTop}
